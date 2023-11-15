@@ -1,0 +1,657 @@
+# Copyright (C) 2023 Haywoood Devteam
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: Events Calendar for WordPress 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ecwp\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2023-08-26T13:03:04+05:30\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: ecwp\n"
+
+#. Plugin Name of the plugin
+msgid "Events Calendar for WordPress"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://haywoodtech.it/reach-us"
+msgstr ""
+
+#. Description of the plugin
+msgid "Events Calendar for WordPress is a powerful and user-friendly plugin that allows you to effortlessly manage and showcase events on your WordPress website."
+msgstr ""
+
+#. Author of the plugin
+msgid "Haywoood Devteam"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://haywoodtech.it"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:90
+msgid "Preview Calendar"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:91
+#: public/src/admin/Admin.jsx:48
+#: public/src/dist/admin.js:2612
+msgid "Settings"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:168
+#: admin/class-ecwp-admin.php:183
+#: includes/class-ecwp-hooks.php:322
+msgid "Events"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:170
+msgid "Events Calendar"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:171
+#: admin/class-ecwp-admin.php:184
+msgid "Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:172
+msgid "Add Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:173
+msgid "Add new Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:174
+msgid "New Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:175
+msgid "Edit Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:176
+#: admin/class-ecwp-admin.php:177
+msgid "View Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:178
+msgid "All Events"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:179
+#: public/src/dist/calendar.js:3866
+#: public/src/Toolbar.jsx:108
+msgid "Search Events"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:180
+msgid "Parent Event"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:181
+msgid "No Events found"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:182
+msgid "No Events found in Trash"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:209
+#: admin/class-ecwp-admin.php:211
+#: admin/class-ecwp-admin.php:219
+#: admin/class-ecwp-admin.php:224
+msgid "Venues"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:212
+#: admin/class-ecwp-admin.php:225
+#: admin/class-ecwp-columns.php:55
+#: admin/class-ecwp-metabox.php:326
+msgid "Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:213
+msgid "Add Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:214
+msgid "Add new Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:215
+msgid "New Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:216
+#: admin/class-ecwp-metabox.php:366
+msgid "Edit Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:217
+#: admin/class-ecwp-admin.php:218
+msgid "View Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:220
+msgid "Search Venues"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:221
+msgid "Parent Venue"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:222
+msgid "No Venues found"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:223
+msgid "No Venues found in Trash"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:250
+#: admin/class-ecwp-admin.php:252
+#: admin/class-ecwp-admin.php:253
+#: admin/class-ecwp-admin.php:260
+#: admin/class-ecwp-admin.php:265
+#: admin/class-ecwp-admin.php:266
+#: admin/class-ecwp-metabox.php:376
+#: admin/class-ecwp-metabox.php:412
+msgid "Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:254
+msgid "Add Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:255
+msgid "Add new Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:256
+msgid "New Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:257
+msgid "Edit Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:258
+#: admin/class-ecwp-admin.php:259
+msgid "View Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:261
+msgid "Search Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:262
+msgid "Parent Organizers"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:263
+msgid "No Organizers found"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:264
+msgid "No Organizers found in Trash"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:291
+#: admin/class-ecwp-admin.php:293
+#: admin/class-ecwp-admin.php:308
+msgid "Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:294
+msgid "All Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:295
+msgid "Edit Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:296
+msgid "View Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:297
+msgid "Update Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:298
+msgid "Add new Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:299
+msgid "New Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:300
+#: admin/class-ecwp-admin.php:301
+msgid "Parent Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:302
+msgid "Search Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:303
+msgid "Popular Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:304
+msgid "Separate Event Categories with commas"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:305
+msgid "Add or remove Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:306
+msgid "Choose most used Event Categories"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:307
+msgid "No Event Categories found"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:309
+msgid "Event Category"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:329
+#: admin/class-ecwp-admin.php:331
+#: admin/class-ecwp-admin.php:346
+msgid "Event Tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:332
+msgid "All Event Tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:333
+msgid "Edit Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:334
+msgid "View Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:335
+msgid "Update Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:336
+msgid "Add New Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:337
+msgid "New Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:338
+#: admin/class-ecwp-admin.php:339
+msgid "Parent Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:340
+msgid "Search Event Tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:341
+msgid "Popular Event Tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:342
+msgid "Separate Event Tags with commas"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:343
+msgid "Add or remove event tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:344
+msgid "Choose most used event tags"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:345
+msgid "No Event Tags found"
+msgstr ""
+
+#: admin/class-ecwp-admin.php:347
+msgid "Event Tag"
+msgstr ""
+
+#: admin/class-ecwp-columns.php:53
+msgid "Start Date"
+msgstr ""
+
+#: admin/class-ecwp-columns.php:54
+msgid "End Date"
+msgstr ""
+
+#: admin/class-ecwp-columns.php:56
+msgid "Color"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:97
+#: includes/class-ecwp-hooks.php:188
+msgid "Event Details"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:105
+msgid "Location Details"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:113
+#: admin/class-ecwp-metabox.php:121
+msgid "Organizer Details"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:290
+msgid "Date & Time"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:296
+msgid "Pick your Event Date Range"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:297
+msgid "Event Start Date"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:298
+msgid "Event End Date"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:306
+msgid "Event Website"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:311
+msgid "URL"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:312
+msgid "Highlight Color"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:343
+msgid "Venue Name"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:347
+#: includes/class-ecwp-hooks.php:275
+msgid "Address"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:348
+msgid "Add City"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:349
+msgid "State or Province"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:350
+msgid "Country"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:351
+msgid "Postal Code"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:352
+#: admin/class-ecwp-metabox.php:463
+msgid "Phone"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:353
+#: admin/class-ecwp-metabox.php:464
+#: includes/class-ecwp-hooks.php:311
+msgid "Website"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:362
+#: admin/class-ecwp-metabox.php:365
+msgid "Select Existing Venue Name"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:382
+#: admin/class-ecwp-metabox.php:451
+msgid "Select Existing Organizer Name"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:385
+msgid "Edit Organizer"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:386
+#: admin/class-ecwp-metabox.php:474
+msgid "Remove Organizer"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:393
+#: admin/class-ecwp-metabox.php:400
+msgid "Create or Add New Organizer"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:456
+msgid "OR"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:459
+msgid "Organizer Name"
+msgstr ""
+
+#: admin/class-ecwp-metabox.php:465
+msgid "Email"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:177
+#: includes/class-ecwp-hooks.php:311
+msgid "Link to website"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:193
+msgid "Category"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:194
+msgid "Tags"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:210
+msgid "Start date"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:223
+msgid "End date"
+msgstr ""
+
+#: includes/class-ecwp-hooks.php:238
+msgid "Location"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:50
+#: public/src/dist/admin.js:2612
+msgid "Date Settings of Calendar"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:53
+#: public/src/dist/admin.js:2612
+msgid "Select Date Format"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:64
+#: public/src/dist/admin.js:2612
+msgid "Select Time Fomat"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:74
+#: public/src/dist/admin.js:2612
+msgid "Select Time Zone"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:75
+#: public/src/dist/admin.js:2612
+msgid "When adding events to a calendar, ensure that the correct time zone is selected to ensure accurate date and time."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:95
+#: public/src/dist/admin.js:2612
+msgid "Display Settings of Calendar"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:98
+#: public/src/dist/admin.js:2612
+msgid "Select Default View"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:99
+#: public/src/dist/admin.js:2612
+msgid "When the user visits the calendar, choose the default view for them."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:109
+#: public/src/dist/admin.js:2612
+msgid "Enable or Disable Search"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:110
+#: public/src/dist/admin.js:2612
+msgid "Turn on or off the Search box for finding events by their name."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:113
+#: public/src/dist/admin.js:2612
+msgid "Enable"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:114
+#: public/src/dist/admin.js:2612
+msgid "Disable"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:119
+#: public/src/dist/admin.js:2612
+msgid "Redirect the single event template"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:120
+#: public/src/dist/admin.js:2612
+msgid "When the user clicks on the Event name, direct them to the corresponding content either in a new tab or in the same tab, based on their preference."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:123
+#: public/src/dist/admin.js:2612
+msgid "Open in same tab"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:124
+#: public/src/dist/admin.js:2612
+msgid "Open in new tab"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:129
+#: public/src/dist/admin.js:2612
+msgid "Select Calender Page"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:130
+#: public/src/dist/admin.js:2612
+msgid "Select the Page in which the calendar shortcode is added. This option is mainly used on the Events Archive page to return to the main calendar page."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:142
+#: public/src/dist/admin.js:2612
+msgid "URL or Slug Settings of Calendar"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:145
+#: public/src/dist/admin.js:2612
+msgid "Select Slug for Event Post types"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:146
+#: public/src/dist/admin.js:2612
+msgid "Select the URL Slug for the Event post types."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:151
+#: public/src/dist/admin.js:2612
+msgid "Select Slug for Event Categories"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:152
+#: public/src/dist/admin.js:2612
+msgid "Select the URL Slug for the Event Categories."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:157
+#: public/src/dist/admin.js:2612
+msgid "Select Slug for Event Tags"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:158
+#: public/src/dist/admin.js:2612
+msgid "Select the URL Slug for the Event Tags."
+msgstr ""
+
+#: public/src/admin/Admin.jsx:165
+#: public/src/dist/admin.js:2612
+msgid "Save Settings"
+msgstr ""
+
+#: public/src/admin/Admin.jsx:171
+#: public/src/dist/admin.js:2612
+msgid "Settings saved successfully."
+msgstr ""
+
+#: public/src/calendar.js:57
+#: public/src/calender/List.js:37
+#: public/src/dist/calendar.js:3877
+#: public/src/dist/calendar.js:3910
+msgid "Ended"
+msgstr ""
+
+#: public/src/calender/event/DayEvent.js:15
+#: public/src/dist/calendar.js:3987
+msgid "No events were found for the selected day."
+msgstr ""
+
+#: public/src/calender/NoEvent.js:7
+#: public/src/dist/calendar.js:3932
+msgid "There are no events available for"
+msgstr ""
+
+#: public/src/calender/NoEvent.js:9
+#: public/src/dist/calendar.js:3932
+msgid "There are no events available"
+msgstr ""
+
+#: public/src/dist/calendar.js:3866
+#: public/src/Toolbar.jsx:100
+msgid "Upcoming Events"
+msgstr ""
+
+#: public/src/dist/calendar.js:3866
+#: public/src/Toolbar.jsx:135
+msgid "Month"
+msgstr ""
+
+#: public/src/dist/calendar.js:3866
+#: public/src/Toolbar.jsx:140
+msgid "Day"
+msgstr ""
+
+#: public/src/dist/calendar.js:3866
+#: public/src/Toolbar.jsx:145
+msgid "List"
+msgstr ""

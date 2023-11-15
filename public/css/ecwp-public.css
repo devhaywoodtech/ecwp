@@ -1,0 +1,848 @@
+#ecwp-calendar p,
+.ecwp_monthly_events p {
+  margin: 0;
+  line-height: 1.5em;
+}
+#ecwp-calendar a {
+  text-decoration: none !important;
+}
+#ecwp-calendar button:hover {
+  color: #000 !important;
+}
+#ecwp-calendar {
+  font-family: "Montserrat";
+  max-width: 1140px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+#ecwp-calendar abbr[title] {
+  border: none;
+  text-decoration: none;
+}
+.ecwp_addevent {
+  margin-block-end: 0;
+}
+
+.ecwp_fullwidth {
+  width: 100%;
+}
+
+.ecwp_field.hidden {
+  display: none;
+}
+
+.ecwp_admin_color {
+  width: 20px;
+  height: 20px;
+}
+
+.ecwp_events {
+  overflow: scroll;
+}
+.ecwp_events::-webkit-scrollbar {
+  width: 5px;
+}
+
+.ecwp_events::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 1px 1px 10px #007fff61;
+  border-radius: 0px;
+}
+
+.ecwp_events::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 10px 10px 10px #0770da;
+}
+
+.ecwp_month_picker input {
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  background: none;
+  min-height: 30px;
+  max-width: 150px;
+  color: #0051a8;
+  font-size: 0.8em !important;
+  margin: 0 !important;
+}
+.MuiPickersToolbar-content button {
+  display: none;
+}
+.ecwp_search {
+  margin: 0 !important;
+}
+.ecwp_search_label {
+  top: -15px !important;
+}
+.ecwp_search input {
+  background: none !important;
+  border: none !important;
+  padding: 5px 0 !important;
+  min-height: 20px;
+  margin: 0 !important;
+}
+.ecwp_search input:focus,
+.ecwp_search input:hover {
+  box-shadow: none;
+  border: none;
+}
+
+/***** Month Calender **/
+.ecwp_week {
+  -webkit-flex-basis: 0;
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  user-select: none;
+  padding: 5px;
+}
+
+.ecwp_week .ecwp_title {
+  padding: 16px;
+  text-align: center;
+  color: #1e2d48;
+  font-weight: 600;
+}
+
+.ecwp_month {
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  width: 100%;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  position: relative;
+  user-select: none;
+}
+
+.ecwp_grid {
+  box-sizing: border-box;
+  margin: 0;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-flex-basis: 14.285714%;
+  -ms-flex-preferred-size: 14.285714%;
+  flex-basis: 14.285714%;
+  -webkit-box-flex: 0;
+  -webkit-flex-grow: 0;
+  -ms-flex-positive: 0;
+  flex-grow: 0;
+  max-width: 14.285714%;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+.ecwp_grid:hover .ecwp_paper {
+  background: #f0f8ff;
+}
+.ecwp_paper {
+  background-color: #fdfdff;
+  color: rgba(0, 0, 0, 0.87);
+  -webkit-transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  box-shadow: #0051a833 2px 2px 5px 2px;
+}
+
+.ecwp_paper.today {
+  background-color: #f8f8ff;
+}
+
+.ecwp_box {
+  font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+  color: #0051a8;
+  font-weight: 600;
+  position: relative;
+  flex-direction: column;
+  height: 175px;
+}
+
+p.ecwp_date {
+  margin: 0;
+  font-size: 0.8em;
+  cursor: pointer;
+  width: fit-content;
+}
+p.ecwp_date:hover {
+  color: #1e2d48;
+}
+.ecwp_e_container {
+  font-size: 10px;
+  min-height: 70px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+  padding: 1px;
+  align-content: start;
+  overflow-y: auto;
+  height: 100%;
+}
+.ecwp_c_container {
+  font-size: 10px;
+  max-height: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 5px;
+  place-content: end;
+}
+.ecwp_loader {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.1);
+  position: absolute;
+}
+.ecwp_event {
+  line-height: 1.3em;
+  font-size: 12px;
+  font-weight: 600;
+  color: rgb(14, 14, 14);
+}
+.border_highlight {
+  width: 100%;
+  background: rgba(227, 227, 227, 0.5);
+  padding: 3px 5px;
+  min-height: 20px;
+  margin-bottom: 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+}
+.circle_highlight {
+  width: 15px;
+  height: 15px;
+  padding: 5px;
+  border-radius: 50%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border: 1px solid rgb(221, 221, 221);
+  cursor: pointer;
+}
+.ecwp_multiple {
+  background: rgba(227, 227, 227, 0.5);
+  padding: 3px;
+  min-height: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  cursor: pointer;
+  text-align: center;
+  font-size: 12px;
+  min-width: 20%;
+  display: none;
+}
+.ecwp_e_container > .ecwp_multiple:nth-last-child(1) {
+  display: block;
+}
+
+.ecwp_hover {
+  position: fixed;
+  width: 30%;
+  padding: 1%;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  background: #fefefe;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  max-height: 350px;
+  overflow-y: auto;
+  transition: all 0.5s ease-out;
+  max-width: 450px;
+  z-index: 999;
+}
+.ecwp_hover a {
+  text-decoration: none;
+}
+.ecwp_hover a:hover h2 {
+  color: #000 !important;
+}
+.ecwp_hover h2 {
+  margin: 0;
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-weight: 600;
+}
+.ecwp_hover img {
+  float: left;
+  padding: 0;
+  margin: 5px 10px 0 0;
+}
+.ecwp_hover .e_desc {
+  margin: 10px 0;
+  max-height: 150px;
+  display: flex;
+  flex-direction: row;
+}
+.ecwp_hover .e_desc p {
+  margin: 5px 0;
+  font-size: 13px;
+  text-align: left;
+}
+.ecwp_hover .ecwp_event_details {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  column-gap: 10px;
+}
+.ecwp_hover .ecwp_event_details p {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  margin: 5px !important;
+}
+
+.ecwp_hover .ecwp_event_details {
+  font-size: 12px;
+}
+
+.ecwp_hover .ecwp_event_details svg {
+  width: 20px;
+  height: 24px;
+  fill: #414a4c;
+}
+
+.ecwp_day_calender {
+  font-family: "Montserrat";
+  border: 1px solid #f3f3f7;
+  position: relative;
+}
+.ecwp_day_toolbar {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  color: #c0c0c0;
+  font-weight: 500;
+  font-size: 14px;
+  position: relative;
+  background: #ffffff;
+}
+.ecwp_day_toolbar div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+  padding: 1%;
+  cursor: pointer;
+  user-select: none;
+}
+.ecwp_day_toolbar div:hover {
+  background: -webkit-linear-gradient(to top, #ffffff, #f1f1f1);
+  background: linear-gradient(to top, #ffffff, #f1f1f1);
+  border-bottom: 4px solid #0051a8;
+}
+.ecwp_day_toolbar div:hover span {
+  color: #000;
+  font-weight: 600;
+}
+.ecwp_day_toolbar div .ecwp_day_week {
+  color: #c0c0c0;
+}
+.ecwp_day_toolbar .endofweek {
+  border-right: 1px solid #f3f3f7;
+}
+.ecwp_day_toolbar .ecwp_isToday span {
+  color: #000;
+  font-weight: 600;
+}
+.ecwp_exists span {
+  color: #1b1b1b !important;
+}
+.ecwp_day_toolbar .ecwp_isToday {
+  border-bottom: 4px solid #0051a8;
+  background: -webkit-linear-gradient(to top, #ffffff, #f1f1f1);
+  background: linear-gradient(to top, #ffffff, #f1f1f1);
+}
+.ecwp_day_calender .ecwp_day_events {
+  min-height: 600px;
+  background: #fafafd;
+  background: linear-gradient(to left, #fff 50%, #fafafd 50%);
+}
+.ecwp_day_calender .ecwp_day_events .ecwp_times {
+  display: flex;
+  padding: 2% 10px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #1b1b1b;
+  user-select: none;
+}
+.ecwp_events .border_highlight img {
+  width: 40px;
+  height: auto;
+  border-radius: 50px;
+  min-width: 40px;
+  border: 5px solid #f7f7f7;
+}
+.ecwp_events .ecwp_day_img {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+section.ecwp_events {
+  padding: 2% 10px;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+section.ecwp_events .ecwp_event {
+  font-size: 13px;
+  line-height: 2em;
+  color: #1e2d48;
+}
+.ecwp_events .border_highlight {
+  display: flex;
+  margin: 1% 0;
+  flex-direction: row;
+  padding: 5px 10px 10px 5px;
+  transition: all 0.5s ease-out;
+  background-color: #fafafd !important;
+  color: #1e2d48;
+  box-shadow: rgba(0, 0, 0, 0.04) 0px 3px 5px;
+  align-items: center;
+  column-gap: 15px;
+  user-select: none;
+}
+.ecwp_events .border_highlight:hover {
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+.ecwp_events .border_highlight:hover p,
+.ecwp_events .border_highlight:hover svg {
+  color: #000;
+  fill: #000;
+}
+.ecwp_events .ecwp_event_details {
+  display: flex;
+  gap: 5px;
+  flex-direction: row;
+  align-items: center;
+}
+.ecwp_events .ecwp_day_details {
+  display: flex;
+  flex-direction: row;
+  row-gap: 5px;
+  flex-wrap: wrap;
+}
+.ecwp_events .ecwp_event_details svg {
+  fill: #1e2d48;
+  width: 1em;
+  height: 1em;
+}
+.ecwp_events .ecwp_event_details p {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1e2d48;
+}
+
+.ecwp_events .ecwp_event_details p span:before {
+  font-size: 16px;
+}
+
+section.ecwp_day_navigate {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
+}
+
+section.ecwp_day_navigate div {
+  border: 1px solid #dfdfdf;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.ecwp_next,
+.ecwp_today {
+  margin-left: auto;
+}
+section.ecwp_day_navigate div:hover {
+  background: #ddd;
+}
+section.ecwp_day_navigate p {
+  margin: 0;
+  font-weight: 500;
+  outline: none;
+  user-select: none;
+  font-size: 0.7em;
+}
+.ecwp_event_details span,
+.ecwp_list_details .ecwp_event_details span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  width: auto;
+  padding: 0 20px 0px 0px;
+}
+.ecwp_list_details .ecwp_event_details:first-child:after {
+  content: "-";
+  margin-right: 10px;
+  color: #414a4c;
+}
+.ecwp_event_location .ecwp_event_details:first-child:after {
+  display: none;
+}
+.ecwp_event_location .ecwp_event_details span {
+  width: auto;
+}
+.ecwp_list_calender {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+  position: relative;
+  min-height: 600px;
+  margin-bottom: 20px;
+}
+
+.ecwp_list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px, rgba(0, 0, 0, 0.1) 0px 0px 1px 0px;
+  justify-content: space-between;
+  background: #ffffff;
+  position: relative;
+}
+
+.ecwp_list_date {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0% 2%;
+  border-right: 1px solid #e5e5e5;
+  margin: 1%;
+  min-width: 5%;
+}
+.ecwp_list_date p {
+  word-break: unset;
+}
+.ecwp_list_date p:first-child {
+  font-size: 12px;
+  font-weight: 600;
+  color: #c0c0c0;
+  text-transform: uppercase;
+}
+.ecwp_list_date p:nth-child(2) {
+  font-size: 1.8em;
+  color: #0051a8;
+  font-weight: 600;
+}
+.ecwp_list h2 {
+  font-size: 1.3em;
+  line-height: 1.2em;
+  color: #1b1b1b;
+  margin: 2px 0;
+  font-weight: 600;
+  font-family: "Montserrat";
+}
+.ecwp_list_details a {
+  text-decoration: none !important;
+}
+.ecwp_list_details a:hover h2,
+.ecwp_list:hover h2 {
+  color: #0051a8 !important;
+}
+.ecwp_list_details .ecwp_day_details {
+  display: flex;
+}
+
+.ecwp_list_details .ecwp_event_details {
+  display: flex;
+  margin: 5px 0;
+}
+.ecwp_list_details {
+  padding: 20px 5px;
+  flex: 1 1 auto;
+}
+.ecwp_list_details .ecwp_list_location {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px 0 0;
+}
+.ecwp_list_details p {
+  color: #414a4c;
+  font-weight: 500;
+  font-size: 13px;
+}
+.ecwp_list_location .ecwp_event_location p {
+  max-width: 180px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ecwp_list_details svg {
+  width: 20px;
+  height: 24px;
+  fill: #414a4c;
+}
+.ecwp_no_events {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  padding: 20px 0;
+  fill: #ba0c2f;
+  border-radius: 5px;
+  box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  margin: 10px 0;
+  background: #fff;
+}
+.ecwp_no_events p {
+  color: #ba0c2f;
+  font-size: 14px;
+}
+p.ecwp_no_day_event {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #ba0c2f;
+  user-select: none;
+}
+.ecwp_expired {
+  position: absolute;
+  font-size: 13px;
+  right: 0;
+  top: 0;
+  background: #ba0c2f;
+  padding: 3px 12px;
+  color: #fefefe;
+}
+.ecwp_monthly_events {
+  width: 100%;
+  margin: 20px auto;
+  display: flex;
+  column-gap: 2%;
+  font-family: "Montserrat";
+  max-width: 1140px;
+}
+.ecwp_container {
+  flex: 1 1 70%;
+  background: #fefefe;
+  padding: 0;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.ecwp_container_main {
+  padding: 20px;
+}
+.ecwp_monthly_events img.ecwp_img {
+  max-width: 100% !important;
+  height: auto !important;
+}
+.ecwp_sidebar {
+  background: #fefefe;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  flex: 1 1 30%;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  position: relative;
+}
+.ecwp_sidebar_title {
+  padding: 5% 3%;
+  font-weight: 600;
+  text-transform: uppercase;
+  border-bottom: 1px solid #0051a8;
+  color: #0051a8;
+}
+.ecwp_items {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  margin: 5px;
+}
+.ecwp_sidebar .ecwp_items {
+  display: flex;
+  column-gap: 15px;
+  align-items: center;
+  font-weight: 500;
+  border-bottom: 1px solid #d9d9d9;
+  padding-bottom: 25px;
+}
+.ecwp_sidebar .ecwp_items:last-child {
+  border: none;
+  display: flex;
+  justify-content: center;
+}
+.ecwp_item {
+  display: flex;
+  flex-direction: column;
+  font-size: 15px;
+  line-height: 1.5em;
+}
+.ecwp_item time,
+.ecwp_item p {
+  color: #262626;
+}
+.ecwp_title {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: #ba0c2f;
+}
+.ecwp_items .material-icons {
+  font-size: 24px;
+  color: #ba0c2f;
+}
+
+.ecwp_organizers {
+  display: flex;
+  margin: 20px 0;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.ecwp_organizers .ecwp_org {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex: 1 0 49%;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+}
+
+.ecwp_org_content {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+.ecwp_org_content .ecwp_items {
+  margin: 2px 0;
+  gap: 10px;
+  align-items: center;
+  word-break: break-word;
+}
+.ecwp_org_content span {
+  font-size: 16px !important;
+  color: #262626 !important;
+}
+.ecwp_org_content .ecwp_title {
+  text-transform: none;
+}
+
+.ecwp_terms {
+  margin: 0 auto;
+  max-width: 1140px;
+  margin-bottom: 10px;
+}
+
+.ecwp_term_title {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+  margin: 20px 0;
+  font-weight: bold;
+}
+
+.ecwp_terms p {
+  color: #0051a8;
+  margin: 0;
+}
+
+@media only screen and (max-width: 600px) {
+  .ecwp_container {
+    margin: 10px;
+  }
+  .ecwp_sidebar {
+    margin: 10px;
+  }
+  .ecwp_week .ecwp_title {
+    padding: 0;
+  }
+  .ecwp_box {
+    max-height: 50px;
+  }
+  .ecwp_e_container {
+    min-height: auto;
+  }
+  p.ecwp_date {
+    font-size: 0.5em;
+  }
+  .border_highlight,
+  .circle_highlight,
+  .ecwp_multiple {
+    display: none;
+  }
+  .ecwp_month .ecwp_multiple {
+    display: none !important;
+  }
+  .ecwp_paper:has(.border_highlight),
+  .ecwp_paper:has(.circle_highlight) {
+    background: #d9d9d9;
+  }
+  .ecwp_list {
+    flex-direction: column-reverse;
+    align-items: normal;
+    position: relative;
+  }
+  .ecwp_list_details .ecwp_list_location {
+    flex-direction: column;
+  }
+  .ecwp_list_details .ecwp_day_details {
+    flex-direction: column;
+  }
+  .ecwp_list_details {
+    padding: 20px;
+  }
+  .ecwp_list_date {
+    position: absolute;
+    top: 0;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 10px;
+    border: none;
+    right: 0;
+  }
+  .ecwp_list_details .ecwp_event_details:first-child:after {
+    content: "";
+  }
+  .ecwp_day_toolbar,
+  .ecwp_times {
+    display: none !important;
+  }
+  section.ecwp_day_navigate {
+    padding-top: 10px;
+  }
+  .ecwp_events .border_highlight {
+    margin-left: 0% !important;
+    width: 100% !important;
+    margin-bottom: 10px;
+  }
+  .ecwp_events .ecwp_event_details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .ecwp_events .ecwp_day_img {
+    padding: 5px;
+    align-self: flex-start;
+  }
+  .ecwp_no_events {
+    padding: 10px;
+    align-items: flex-start;
+  }
+  .ecwp_monthly_events {
+    flex-direction: column;
+  }
+  .ecwp_expired {
+    left: 0;
+    width: min-content;
+  }
+  .ecwp_month_nav {
+    padding: 5px !important;
+  }
+  .ecwp_month_nav svg {
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+  }
+  .ecwp_month_nav abbr {
+    display: none;
+  }
+}

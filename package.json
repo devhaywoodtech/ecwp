@@ -1,0 +1,18 @@
+{
+  "name": "eventscalendar",
+  "version": "1.0.0",
+  "description": "Grunting the plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "grunt": "^1.6.1",
+    "grunt-contrib-uglify": "^5.2.2"
+  },
+  "devDependencies": {
+    "grunt-contrib-copy": "^1.0.0"
+  }
+}
