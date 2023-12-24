@@ -11,6 +11,9 @@
  * @subpackage Ecwp/admin/partials
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 
 <div id="ecwp-calendar-settings" data-logo="<?php echo esc_url( ECWP_ADMIN_LOGO ); ?>"></div>

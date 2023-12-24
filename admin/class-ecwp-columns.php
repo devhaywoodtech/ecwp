@@ -133,5 +133,4 @@ class Ecwp_Columns {
 			$query->set( 'orderby', 'meta_value_num' );
 		}
 	}
-
 }

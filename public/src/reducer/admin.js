@@ -34,7 +34,7 @@ export const updateSettings = createAsyncThunk("events/savesettings", async (pro
  * Fetch Events from the WordPress default REST API
  */
 export const fetchEvents = createAsyncThunk("events/fetchEvents", async (props) => { 
-    const { year, mon, term, tax } = props;  
+    const { year, mon, term, tax } = props;   console.log(year);
     let url = API_URL+'wp/v2/wood-event?year='+year+'&month='+mon+'&timezone='+userTimezone+'&per_page='+per_page;
     if(term !== null && tax !== null){
         url += '&'+tax+'='+term;

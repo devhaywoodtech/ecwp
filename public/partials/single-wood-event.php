@@ -11,6 +11,9 @@
  * @subpackage Ecwp/public/partials
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 get_header();
 while ( have_posts() ) :
 	the_post();

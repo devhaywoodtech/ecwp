@@ -291,9 +291,9 @@ class Ecwp_Hooks {
 			$category = array();
 			foreach ( $terms as $term ) {
 				$url        = get_term_link( $term, $tax );
-				$category[] = sprintf( '<a href="%s">%s</a>', $url, $term->name );
+				$category[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_attr( $term->name ) );
 			}
-			return printf('<div class="ecwp_items"><span class="material-icons">event_note</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', $title, implode(', ', $category)); //phpcs:ignore
+			return printf( '<div class="ecwp_items"><span class="material-icons">event_note</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_attr( $title ), implode( ', ', $category ) ); //phpcs:ignore
 		}
 		return $terms;
 	}

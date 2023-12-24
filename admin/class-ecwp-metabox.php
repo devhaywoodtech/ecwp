@@ -166,12 +166,13 @@ class Ecwp_Metabox {
 				update_post_meta( $post_id, $this->slug . 'venue_id', absint( $venue_id ) );
 			}
 
-			$organizer_ids = ! empty( $_POST[ $this->slug . 'organizer_id' ] ) ? array_map( 'sanitize_text_field', $_POST[ $this->slug . 'organizer_id' ] ) : array(); //phpcs:ignore			
+			$organizer_ids = ! empty( $_POST[ $this->slug . 'organizer_id' ] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST[ $this->slug . 'organizer_id' ] ) ) : array();
+
 			$organizer_ids = array_values( $organizer_ids );
 
 			// If empty organizer title do not save organizer meta data.
 			if ( ! empty( $_POST[ $this->organizer . 'text_title' ] ) && is_array( $_POST[ $this->organizer . 'text_title' ] ) ) {
-				foreach ( $_POST[ $this->organizer . 'text_title' ] as $key => $organizer_arr ) { // phpcs:ignore
+				foreach ( $_POST[ $this->organizer . 'text_title' ] as $key => $organizer_arr ) { //phpcs:ignore
 					$organizer_title = ! empty( $organizer_arr ) ? sanitize_text_field( wp_unslash( $organizer_arr ) ) : '';
 					if ( '' !== $organizer_title ) {
 						$organizer       = new Ecwp_Posttypes( 'wood-organizers', $organizer_title );
@@ -211,20 +212,25 @@ class Ecwp_Metabox {
 			$organizer_original_id = $post_id;
 		}
 
+		$ecwp_inputs  = new Ecwp_Inputs();
+		$event_inputs = $ecwp_inputs->event_inputs( $this->event );
+		$venue_inputs = $ecwp_inputs->venue_inputs( $this->location );
 		// Save meta values for wood-event post type.
-		foreach ( $_POST as $key => $value ) {
+		foreach ( $event_inputs as $key ) {
 			if ( $key !== $this->event . 'nonce' ) {
-				if ( str_contains( $key, $this->event ) && 'wood-event' === $post->post_type ) {
-					if ( str_contains( $key, $this->event . 'text_' ) || str_contains( $key, $this->event . 'date_' ) ) {
-						$newvalue = ! empty( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
-					}
-					if ( str_contains( $key, $this->event . 'url_' ) ) {
-						$newvalue = ! empty( $_POST[ $key ] ) ? esc_url_raw( wp_unslash( $_POST[ $key ] ) ) : '';
-					}
-					update_post_meta( $post_id, $key, $newvalue );
+				if ( str_contains( $key, $this->event . 'text_' ) || str_contains( $key, $this->event . 'date_' ) ) {
+					$newvalue = ! empty( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
 				}
+				if ( str_contains( $key, $this->event . 'url_' ) ) {
+					$newvalue = ! empty( $_POST[ $key ] ) ? esc_url_raw( wp_unslash( $_POST[ $key ] ) ) : '';
+				}
+				update_post_meta( $post_id, $key, $newvalue );
+			}
+		}
 
-				// Save meta values for wood-venue post type using $venue_id.
+		// Save meta values for wood-venue post type using $venue_id.
+		foreach ( $venue_inputs as $key ) {
+			if ( $key !== $this->event . 'nonce' ) {
 				if ( ! empty( $venue_id ) && absint( $venue_id ) && str_contains( $key, $this->location ) && $original_venue_id !== $venue_id ) {
 					if ( str_contains( $key, $this->location . 'text_' ) ) {
 						$newvalue = ! empty( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
@@ -251,26 +257,29 @@ class Ecwp_Metabox {
 			return;
 		}
 
-		// bail out if this is not an event item.
+		// bail out if this is not an organizers item.
 		if ( 'wood-organizers' !== $post->post_type ) {
 			return;
 		}
 
-		// Check the Postype Event.
+		// Check the Postype Organizers.
 		if ( 'wood-organizers' === $post->post_type && isset( $_POST[ $this->organizer . 'nonce' ] ) && wp_verify_nonce( sanitize_key( $_POST[ $this->organizer . 'nonce' ] ), $this->organizer . 'action' ) ) {
-			foreach ( $_POST as $key => $value ) {
-				if ( $key !== $this->organizer . 'nonce' ) {
-					if ( ! empty( $post_id ) && absint( $post_id ) && str_contains( $key, $this->organizer ) ) {
-						if ( str_contains( $key, $this->organizer . 'text_' ) ) {
-							$newvalue = ! empty( $_POST[ $key ] ) ? sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) : '';
+			$ecwp_inputs      = new Ecwp_Inputs();
+			$organizer_inputs = $ecwp_inputs->organizer_inputs( $this->organizer );
+
+			foreach ( $organizer_inputs as $input ) {
+				if ( $input !== $this->organizer . 'nonce' ) {
+					if ( ! empty( $post_id ) && absint( $post_id ) && str_contains( $input, $this->organizer ) ) {
+						if ( str_contains( $input, $this->organizer . 'text_' ) ) {
+							$newvalue = ! empty( $_POST[ $input ] ) ? sanitize_text_field( wp_unslash( $_POST[ $input ] ) ) : '';
 						}
-						if ( str_contains( $key, $this->organizer . 'url_' ) ) {
-							$newvalue = ! empty( $_POST[ $key ] ) ? esc_url_raw( wp_unslash( $_POST[ $key ] ) ) : '';
+						if ( str_contains( $input, $this->organizer . 'url_' ) ) {
+							$newvalue = ! empty( $_POST[ $input ] ) ? esc_url_raw( wp_unslash( $_POST[ $input ] ) ) : '';
 						}
-						if ( str_contains( $key, $this->organizer . 'email_' ) ) {
-							$newvalue = ! empty( $_POST[ $key ] ) ? sanitize_email( wp_unslash( $_POST[ $key ] ) ) : '';
+						if ( str_contains( $input, $this->organizer . 'email_' ) ) {
+							$newvalue = ! empty( $_POST[ $input ] ) ? sanitize_email( wp_unslash( $_POST[ $input ] ) ) : '';
 						}
-						update_post_meta( $post_id, $key, $newvalue );
+						update_post_meta( $post_id, $input, $newvalue );
 					}
 				}
 			}

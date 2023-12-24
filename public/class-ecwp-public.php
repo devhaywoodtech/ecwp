@@ -105,13 +105,13 @@ class Ecwp_Public {
 	 *
 	 * @param mixed $atts Shortcode attributes from the user.
 	 */
-	public function monthly_events( $atts ) {
+	public function ecwp_monthly_events( $atts ) {
 		$atts = shortcode_atts(
 			array(
 				'view' => '',
 			),
 			$atts,
-			'monthly_events'
+			'ecwp_monthly_events'
 		);
 		ob_start();
 		printf( '<div id="ecwp-calendar" data-display="%s"></div>', esc_attr( $atts['view'] ) );

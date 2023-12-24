@@ -2,7 +2,7 @@
 Contributors: haywoodtech
 Tags: events calendar, events, calendar, Event, organizer, schedule
 Requires at least: 6.0
-Tested up to: 6.3
+Tested up to: 6.4.2
 Stable tag: 1.0.2
 Requires PHP: 7.2
 License: GPLv2 or later
@@ -16,7 +16,7 @@ The Monthly Events Calendar for WordPress is a feature-rich plugin that enhances
 
 This plugin used the REST API to display the events. 
 
-🚀 Use the shortcode **[monthly_events]** to display it on the page.
+🚀 Use the shortcode **[wp_monthly_events]** to display it on the page.
 
 ## 📅 Key features of an Monthly Events Calendar for WordPress typically include: ##
 
@@ -40,6 +40,9 @@ Ensuring that the calendar is mobile-friendly and adjusts its layout to differen
 
 Overall, an Events Calendar for WordPress empowers website owners to effectively communicate their event schedules, engage their audience, and enhance the user experience by providing a centralized hub for event-related information. It simplifies the management of events and encourages user participation, making it an essential tool for any WordPress site aiming to promote and organize events.
 
+* [Monthly Events Calendar's GitHub repository](https://github.com/devhaywoodtech/ecwp/) - Includes all the uncompressed files.
+
+
 == Installation ==
 
 This section describes how to install the plugin and get it working. 
@@ -49,8 +52,9 @@ e.g.
 1. Upload `ecwp` folder to the `/wp-content/plugins/` directory.
 2. Activate the plugin named "Monthly Events Calendar" through the 'Plugins' menu in WordPress.
 3. Navigate to WordPress Admin end "Pages => Add New" in the admin end.
-4. Add the shortcode **[monthly_events]** to display the events calendar.
+4. Add the shortcode **[wp_monthly_events]** to display the events calendar.
 5. Hurrah! You have configured the plugin successfully.
+
 
 == Frequently Asked Questions ==
 

@@ -116,6 +116,11 @@ class Ecwp {
 		require_once plugin_dir_path( __DIR__ ) . 'admin/class-ecwp-admin.php';
 
 		/**
+		 * The class responsible for defining all inputs or form controls used in the metabox.
+		 */
+		require_once plugin_dir_path( __DIR__ ) . 'admin/class-ecwp-inputs.php';
+
+		/**
 		 * The class responsible for defining all actions that occur in the metabox area.
 		 */
 		require_once plugin_dir_path( __DIR__ ) . 'admin/class-ecwp-metabox.php';
@@ -224,7 +229,7 @@ class Ecwp {
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
 		$this->loader->add_filter( 'template_include', $plugin_public, 'category_template', 99 );
 		$this->loader->add_filter( 'single_template', $plugin_public, 'single_event_template' );
-		add_shortcode( 'monthly_events', array( $plugin_public, 'monthly_events' ) );
+		add_shortcode( 'wp_monthly_events', array( $plugin_public, 'ecwp_monthly_events' ) );
 
 		$hooks = new Ecwp_Hooks( $this->get_settings() );
 		$this->loader->add_action( 'modern_single_template_start', $hooks, 'template_start' );

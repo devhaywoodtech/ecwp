@@ -11,6 +11,9 @@
  * @subpackage Ecwp/admin/partials
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 ?>
 
 <div id="ecwp-calendar" data-admin="1"></div>

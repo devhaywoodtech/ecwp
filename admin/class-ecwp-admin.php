@@ -127,10 +127,9 @@ class Ecwp_Admin {
 		 * class.
 		 */
 		global $typenow;
-		wp_enqueue_script( 'ecwp-moment', plugin_dir_url( __FILE__ ) . 'js/moment.min.js', array( 'jquery' ), '2.2.1', false );
-		wp_enqueue_script( 'ecwp-picker', plugin_dir_url( __FILE__ ) . 'js/daterangepicker.js', array( 'jquery' ), '3.1', false );
+		wp_enqueue_script( 'ecwp-picker', plugin_dir_url( __FILE__ ) . 'js/daterangepicker.js', array( 'jquery', 'moment' ), '3.1', false );
 		wp_enqueue_script( 'ecwp-select2', plugin_dir_url( __FILE__ ) . 'js/select2.full.min.js', array( 'jquery' ), '4.1.0', false );
-		wp_enqueue_script( 'ecwp', plugin_dir_url( __FILE__ ) . 'js/ecwp-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( 'ecwp', plugin_dir_url( __FILE__ ) . 'js/ecwp-admin.js', array( 'jquery', 'moment' ), $this->version, false );
 		wp_localize_script(
 			'ecwp',
 			'ECWP',

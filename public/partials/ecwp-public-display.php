@@ -11,6 +11,9 @@
  * @subpackage Ecwp/public/partials
  */
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly.
+}
 get_header();
 $queried_object = get_queried_object();
 do_action( 'modern_taxonomy_template_title', $queried_object );

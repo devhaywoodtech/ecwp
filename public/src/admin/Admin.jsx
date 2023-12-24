@@ -38,7 +38,7 @@ export default function Admin(props) {
                 <div className="ecwp-admin-container">
                     <div className="ecwp-admin-logo">
                         <img src={logo} />
-                        <p>Use the shortcode <span>[monthly_events]</span> on your page to display the Events Calendar.</p>
+                        <p>Use the shortcode <span>[wp_monthly_events]</span> on your page to display the Events Calendar.</p>
                     </div>
                 </div>
             </div>            

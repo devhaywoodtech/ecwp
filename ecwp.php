@@ -44,7 +44,7 @@ define( 'ECWP_TAG_SLUG', 'events-tag' );
  * The code that runs during plugin activation.
  * This action is documented in includes/class-ecwp-activator.php
  */
-function activate_ecwp() {
+function ecwp_activate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ecwp-activator.php';
 	Ecwp_Activator::activate();
 }
@@ -53,13 +53,13 @@ function activate_ecwp() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-ecwp-deactivator.php
  */
-function deactivate_ecwp() {
+function ecwp_deactivate() {
 	require_once plugin_dir_path( __FILE__ ) . 'includes/class-ecwp-deactivator.php';
 	Ecwp_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_ecwp' );
-register_deactivation_hook( __FILE__, 'deactivate_ecwp' );
+register_activation_hook( __FILE__, 'ecwp_activate' );
+register_deactivation_hook( __FILE__, 'ecwp_deactivate' );
 
 /**
  * The core plugin class that is used to define internationalization,
@@ -76,8 +76,8 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-ecwp.php';
  *
  * @since    1.0.0
  */
-function run_ecwp() {
+function ecwp_run() {
 	$plugin = new Ecwp();
 	$plugin->run();
 }
-run_ecwp();
+ecwp_run();
