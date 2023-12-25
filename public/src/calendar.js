@@ -71,7 +71,10 @@ if (ecwp_add_calendar != null) {
                     endTime={format(fromUnixTime(endDate), 'kk:mm')}
                     timeZone="currentBrowser"
                     hideCheckmark
-                    hideBranding
+                    hideBranding={true}
+                    hideRichData
+                    inline
+                    listStyle='overlay'
                 /> 
             </React.Fragment>
         );
@@ -88,7 +91,11 @@ if (ecwp_add_calendar != null) {
                 endTime={format(fromUnixTime(endDate), 'kk:mm')}
                 timeZone="currentBrowser"
                 hideCheckmark
-                hideBranding
+                hideBranding={true}
+                //hideRichData
+                //images={['http://192.168.1.7/ecwppublic/wp-content/uploads/2023/12/Benefits.png','http://192.168.1.7/ecwppublic/wp-content/uploads/2023/12/Benefits.png','http://192.168.1.7/ecwppublic/wp-content/uploads/2023/12/Benefits.png']}
+                inline
+                listStyle='overlay'
             />       
         );
     }

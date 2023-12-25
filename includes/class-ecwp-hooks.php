@@ -293,7 +293,12 @@ class Ecwp_Hooks {
 				$url        = get_term_link( $term, $tax );
 				$category[] = sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_attr( $term->name ) );
 			}
-			return printf( '<div class="ecwp_items"><span class="material-icons">event_note</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_attr( $title ), implode( ', ', $category ) ); //phpcs:ignore
+			$allowed = array(
+				'a' => array(
+					'href' => true,
+				),
+			);
+			return printf( '<div class="ecwp_items"><span class="material-icons">event_note</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_attr( $title ), wp_kses( implode( ', ', $category ), $allowed ) );
 		}
 		return $terms;
 	}

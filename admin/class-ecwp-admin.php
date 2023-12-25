@@ -77,7 +77,6 @@ class Ecwp_Admin {
 		wp_enqueue_style( $this->plugin_name . '-picker', plugin_dir_url( __FILE__ ) . 'css/daterangepicker.css', array(), '3.1', 'all' );
 		wp_enqueue_style( $this->plugin_name . '-calendar', ECWP_PATH . 'public/css/ecwp-public.css', array( 'wp-components' ), $this->version, 'all' );
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/ecwp-admin.css', array(), $this->version, 'all' );
-		wp_enqueue_style( $this->plugin_name . '-select2', plugin_dir_url( __FILE__ ) . 'css/select2.min.css', array(), '4.1.0', 'all' );
 		wp_enqueue_style( 'wp-color-picker' );
 	}
 
@@ -128,7 +127,6 @@ class Ecwp_Admin {
 		 */
 		global $typenow;
 		wp_enqueue_script( 'ecwp-picker', plugin_dir_url( __FILE__ ) . 'js/daterangepicker.js', array( 'jquery', 'moment' ), '3.1', false );
-		wp_enqueue_script( 'ecwp-select2', plugin_dir_url( __FILE__ ) . 'js/select2.full.min.js', array( 'jquery' ), '4.1.0', false );
 		wp_enqueue_script( 'ecwp', plugin_dir_url( __FILE__ ) . 'js/ecwp-admin.js', array( 'jquery', 'moment' ), $this->version, false );
 		wp_localize_script(
 			'ecwp',

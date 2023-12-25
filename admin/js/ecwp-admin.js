@@ -28,8 +28,7 @@ jQuery(document).ready(function ($) {
 		$('#ecwp_event_date_end').val(end);
 
 	});
-
-	$('.ecwp_select2').select2();
+	
 	$('.ecwp_colors').wpColorPicker();
 
 	//Add New Organizer
@@ -58,7 +57,7 @@ jQuery(document).ready(function ($) {
 	});
 
 	//When Organizer is selected remove other fields
-	$(document).on('change', '.ecwp_organizer_select_inputs .wpdropdown .ecwp_select2', function (){		
+	$(document).on('change', '.ecwp_organizer_select_inputs .wpdropdown .ecwp_select', function (){		
 		var remove_id = $(this).parent().parent().attr("data-id");
 		$('#ecwp_org_other_'+remove_id).slideUp("slow", function() { $('#ecwp_org_other_'+remove_id).remove();});
 

@@ -368,10 +368,10 @@ class Ecwp_Metabox {
 
 			// Select Already existing Venue Names from wood-event postypes.
 			if ( 'wood-event' === $post->post_type ) {
-				new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select2', $venue_id, array( 'wood-venue' ) );
+				new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
 			}
 		} else {
-			new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select2', $venue_id, array( 'wood-venue' ) );
+			new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
 			printf( "<a href='%s' target='_blank'>%s</a>", esc_url( get_edit_post_link( $venue_id ) ), esc_html__( 'Edit Venue', 'ecwp' ) );
 		}
 	}
@@ -457,7 +457,7 @@ class Ecwp_Metabox {
 		// Add Organizer name if this metabox is listed in the wood-event postype.
 		if ( 'wood-event' === $post_type ) {
 			if ( $organizers_count > 0 ) {
-				new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'ecwp' ), 'ecwp_select2', '', array( 'wood-organizers' ), $ajax );
+				new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'ecwp' ), 'ecwp_select', '', array( 'wood-organizers' ), $ajax );
 
 			}
 			if ( $organizers_count > 0 ) {

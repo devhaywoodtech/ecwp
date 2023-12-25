@@ -1,7 +1,7 @@
 var path= require('path')
 module.exports = {  
-    mode: "development",
-    //mode: "production",
+    //mode: "development",
+    mode: "production",
     externals: {
         "react": "React",
         "react-dom": "ReactDOM"
