@@ -141,6 +141,7 @@ class Ecwp_Admin {
 				'posttype' => $typenow,
 				'ajaxurl'  => admin_url( 'admin-ajax.php' ),
 				'security' => wp_create_nonce( 'handle_org' ),
+				'nonce'    => wp_create_nonce( 'wp_rest' ),
 			)
 		);
 		wp_enqueue_script( $this->plugin_name . '-runtime', ECWP_BUILD . 'runtime~calendar.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );

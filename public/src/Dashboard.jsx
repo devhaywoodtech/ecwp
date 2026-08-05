@@ -8,7 +8,7 @@ import Month from './calender/Month';
 import Day from './calender/Day';
 import ListEvent from './calender/List';
 import { val } from './reducer/admin';
-import { fetchEvents, fetchSettings } from './reducer/admin';
+import { fetchEvents, fetchSettings, fetchLatestEvents } from './reducer/admin';
 
 const convertHexToRGBA = (hexCode, opacity = 1) => {  
     let hex = hexCode.replace('#', '');
@@ -42,12 +42,18 @@ export default function Dashboard(props) {
      * Fetch Events from the API
      */
     useEffect(() => {
-        dispatch(fetchSettings(props)).then((result) => {
-            dispatch(fetchEvents({year, mon, tax, term})).then((res) => {
-                setShow(true);                   
+        dispatch(fetchSettings(props)).then(() => {
+            dispatch(fetchEvents({ year, mon, tax, term })).then((res) => {
+                const monthEvents = res.payload;
+                if (!monthEvents || monthEvents.length === 0) {
+                    // Nothing this month — fall back to the next upcoming events.
+                    dispatch(fetchLatestEvents({ tax, term })).then(() => setShow(true));
+                } else {
+                    setShow(true);
+                }
             });
-        });       
-    }, []);      
+        });
+    }, []);     
 
     return (
         <Box sx={{ display: { xs: 'block', sm: 'flex' } }}>

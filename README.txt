@@ -2,8 +2,8 @@
 Contributors: haywoodtech
 Tags: events calendar, events, calendar, Event, organizer, schedule
 Requires at least: 6.0
-Tested up to: 6.4.2
-Stable tag: 1.0.2
+Tested up to: 7.0
+Stable tag: 1.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -74,10 +74,19 @@ No. You need to enable the REST API if some of the security plugins denied that.
 
 == Changelog ==
 
+= 1.3 =
+* Fix: Month and Upcoming views now resolve event dates reliably across timezones; past events no longer appear under Upcoming, and events now show in the correct month.
+* Fix: Calendar navigation now advances to the correct year when moving from December to January (and back).
+* Security: Restricted the settings REST endpoint to administrators and added input sanitization on save.
+* Compatibility: Tested up to WordPress 6.8.
+
 = 1.0.0 =
 * Initial Release of the Plugin
 
 == Upgrade Notice ==
+
+= 1.3 =
+Security and bug-fix release. Update is recommended for all users.
 
 = 1.0.0 =
 Initial Release of the Plugin

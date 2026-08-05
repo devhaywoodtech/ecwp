@@ -41,13 +41,15 @@ function Toolbar(props) {
     const dispatch = useDispatch();
 
     const changenextmonth = () => {
-        dispatch(nextMonth()); 
-        dispatch(fetchEvents( { year, mon : nextmonthInt, term, tax } ));
+        const next = add(current, { months: 1 });
+        dispatch(nextMonth());
+        dispatch(fetchEvents( { year: getYear(next), mon: getMonth(next) + 1, term, tax } ));
     }
 
-    const changeprevmonth = () => { 
+    const changeprevmonth = () => {
+        const prev = sub(current, { months: 1 });
         dispatch(prevMonth());
-        dispatch(fetchEvents( { year, mon : previousmonthInt, term, tax } ));
+        dispatch(fetchEvents( { year: getYear(prev), mon: getMonth(prev) + 1, term, tax } ));
     }
 
     const goToLatest = () => { 

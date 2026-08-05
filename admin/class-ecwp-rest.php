@@ -120,28 +120,38 @@ class Ecwp_Rest {
 	}
 
 	/**
-	 * Filter events by custom fields dates
+	 * Resolve a request timezone string to a DateTimeZone, falling back to the site timezone.
 	 *
-	 * @since    1.0.0
-	 *
-	 * @param mixed $args WordPress REST arguments.
-	 * @param mixed $request WordPress request.
+	 * @param string $timezone Timezone identifier from the request.
+	 * @return DateTimeZone
+	 */
+	private function get_timezone( $timezone ) {
+		if ( $timezone && in_array( $timezone, timezone_identifiers_list(), true ) ) {
+			return new DateTimeZone( $timezone );
+		}
+		return wp_timezone();
+	}
+
+	/**
+	 * Filter events by the requested month.
 	 */
 	public function filter_by_date( $args, $request ) {
-
 		if ( ! isset( $request['month'] ) ) {
 			return $args;
 		}
 
-		$year     = sanitize_text_field( $request['year'] );
-		$month    = sanitize_text_field( $request['month'] );
-		$timezone = sanitize_text_field( $request['timezone'] );
+		$year     = absint( $request['year'] );
+		$month    = absint( $request['month'] );
+		$timezone = $this->get_timezone( sanitize_text_field( $request['timezone'] ) );
 
-		$start_date = gmdate( $year . '-' . $month . '-01 00:00:00' );
-		$end_date   = gmdate( 'Y-m-d 23:59:59', mktime( 0, 0, 0, $month + 1, 0, $year ) );
+		// First and last moment of the requested month, in the visitor's timezone.
+		$start = new DateTime( sprintf( '%04d-%02d-01 00:00:00', $year, $month ), $timezone );
+		$end   = clone $start;
+		$end->modify( 'last day of this month' );
+		$end->setTime( 23, 59, 59 );
 
-		$start_timestamp = strtotime( $start_date . ' ' . $timezone );
-		$end_timestamp   = strtotime( $end_date . ' ' . $timezone );
+		$start_timestamp = $start->getTimestamp();
+		$end_timestamp   = $end->getTimestamp();
 
 		$source_meta_query = array(
 			'relation' => 'OR',
@@ -185,24 +195,20 @@ class Ecwp_Rest {
 	}
 
 	/**
-	 * Filter events by upcoming date
-	 *
-	 * @since    1.0.0
-	 *
-	 * @param mixed $args WordPress REST arguments.
-	 * @param mixed $request WordPress request.
+	 * Filter events by upcoming date.
 	 */
 	public function filter_by_upcoming( $args, $request ) {
 		if ( ! isset( $request['upcoming'] ) ) {
 			return $args;
 		}
-		$year     = sanitize_text_field( $request['currentYear'] );
-		$month    = sanitize_text_field( $request['currentMonth'] );
-		$date     = sanitize_text_field( $request['currentDate'] );
-		$timezone = sanitize_text_field( $request['timezone'] );
 
-		$start_date      = gmdate( $year . '-' . $month . '-' . $date . ' 00:00:00' );
-		$start_timestamp = strtotime( $start_date . ' ' . $timezone );
+		$year     = absint( $request['currentYear'] );
+		$month    = absint( $request['currentMonth'] );
+		$date     = absint( $request['currentDate'] );
+		$timezone = $this->get_timezone( sanitize_text_field( $request['timezone'] ) );
+
+		$start           = new DateTime( sprintf( '%04d-%02d-%02d 00:00:00', $year, $month, $date ), $timezone );
+		$start_timestamp = $start->getTimestamp();
 
 		$source_meta_query = array(
 			'relation' => 'AND',
@@ -220,21 +226,17 @@ class Ecwp_Rest {
 		$args['order']        = 'asc';
 		return $args;
 	}
-	/**
-	 * Register our routes.
-	 *
-	 * @since    1.0.0
-	 */
+	
 	public function register_routes() {
 		register_rest_route(
 			$this->namespace,
 			'/' . $this->resource_name,
 			array(
-				// Here we register the readable endpoint for collections.
 				array(
 					'methods'             => 'GET',
 					'callback'            => array( $this, 'get_items' ),
-					'permission_callback' => array( $this, 'get_items_permissions_check' ),
+					// Display settings are needed to render the public calendar, so reads stay public.
+					'permission_callback' => '__return_true',
 				),
 			)
 		);
@@ -242,53 +244,83 @@ class Ecwp_Rest {
 			$this->namespace,
 			'/savesettings',
 			array(
-				// Here we register the readable endpoint for collections.
 				array(
 					'methods'             => 'POST',
 					'callback'            => array( $this, 'save_settings' ),
-					'permission_callback' => array( $this, 'get_items_permissions_check' ),
+					// Writing settings must be restricted to administrators.
+					'permission_callback' => array( $this, 'save_settings_permissions_check' ),
 				),
 			)
 		);
 	}
 
 	/**
-	 * Check permissions for the posts.
+	 * Only administrators may write the plugin settings.
 	 *
 	 * @param WP_REST_Request $request Current request.
+	 * @return true|WP_Error
 	 */
-	public function get_items_permissions_check( $request ) {
-		if ( ! isset( $request ) ) {
-			return new WP_Error( 'rest_forbidden', esc_html__( 'You cannot view the post resource.' ), array( 'status' => $this->authorization_status_code() ) );
+	public function save_settings_permissions_check( $request ) {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				esc_html__( 'You are not allowed to update these settings.', 'ecwp' ),
+				array( 'status' => $this->authorization_status_code() )
+			);
 		}
 		return true;
 	}
 
 	/**
-	 * Grabs the Settings .
+	 * Grabs the Settings.
 	 */
 	public function get_items() {
 		$settings = get_option( ECWP_SETTINGS );
-		$pages    = get_pages();
-		$data     = array();
-		if ( empty( $settings ) && empty( $pages ) ) {
-			return rest_ensure_response( $data );
+		$data     = array(
+			'settings' => ! empty( $settings ) ? $settings : array(),
+			'pages'    => array(),
+		);
+		// The page list only feeds the admin settings dropdown; do not expose it to anonymous users.
+		if ( current_user_can( 'edit_pages' ) ) {
+			$data['pages'] = get_pages();
 		}
-		$data['settings'] = $settings;
-		$data['pages']    = $pages;
-		// Return all of our response data.
 		return rest_ensure_response( $data );
 	}
 
 	/**
 	 * Save the Settings.
 	 *
-	 * @param mixed WP_REST_Request $request WP REST REQUEST.
+	 * @param WP_REST_Request $request WP REST request.
 	 */
 	public function save_settings( WP_REST_Request $request ) {
-		$ecwp_settings = $request->get_param( 'ecwp_settings' );
-		update_option( ECWP_SETTINGS, $ecwp_settings );
-		return rest_ensure_response( $ecwp_settings );
+		// Defense in depth: re-check capability even though the permission callback already did.
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				esc_html__( 'You are not allowed to update these settings.', 'ecwp' ),
+				array( 'status' => $this->authorization_status_code() )
+			);
+		}
+		$clean = $this->sanitize_settings( $request->get_param( 'ecwp_settings' ) );
+		update_option( ECWP_SETTINGS, $clean );
+		return rest_ensure_response( $clean );
+	}
+
+	/**
+	 * Recursively sanitize the settings payload before persisting it.
+	 *
+	 * @param mixed $value Raw setting value.
+	 * @return mixed Sanitized value.
+	 */
+	private function sanitize_settings( $value ) {
+		if ( is_array( $value ) ) {
+			$clean = array();
+			foreach ( $value as $key => $item ) {
+				$clean[ sanitize_key( $key ) ] = $this->sanitize_settings( $item );
+			}
+			return $clean;
+		}
+		return sanitize_text_field( $value );
 	}
 
 	/**

@@ -5,6 +5,12 @@ const API_URL = ECWP.rest_url;
 const per_page = 100;
 const axios = require("axios");
 
+// Authenticate REST writes for logged-in admins. The nonce is only localized in
+// wp-admin, so on the public calendar this header is simply never set.
+if ( typeof ECWP !== 'undefined' && ECWP.nonce ) {
+    axios.defaults.headers.common['X-WP-Nonce'] = ECWP.nonce;
+}
+
 
 const userTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
