@@ -1,5 +1,8 @@
 module.exports = function (grunt) {
     grunt.initConfig({
+        clean: {
+            build: ['ecwp']          // wipe the previous assembled folder
+        },
         copy: {
             main: {
                 expand: true,
@@ -8,7 +11,7 @@ module.exports = function (grunt) {
                     '**',
                     '!node_modules/**',
                     '!build/**',
-                    '!ecwp/**',            // don't copy the output folder into itself
+                    '!ecwp/**',
                     '!.git/**',
                     '!.github/**',
                     '!Gruntfile.js',
@@ -16,13 +19,23 @@ module.exports = function (grunt) {
                     '!package-lock.json',
                     '!.gitignore',
                     '!.distignore',
-                    '!public/src/**',       // exclude the React source...
-                    'public/src/dist/**'    // ...but keep the built assets
+                    '!public/src/**',
+                    'public/src/dist/**'
+                    // blocks/** is covered by ** and not excluded — verify it lands
                 ],
                 dest: 'ecwp/'
             }
+        },
+        compress: {
+            main: {
+                options: { archive: 'ecwp.zip' },
+                files: [{ expand: true, src: ['ecwp/**'], dest: '/' }]
+            }
         }
     });
+    grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-copy');
-    grunt.registerTask('default', ['copy']);
+    grunt.loadNpmTasks('grunt-contrib-compress');
+    grunt.registerTask('default', ['clean', 'copy']);
+    grunt.registerTask('release', ['clean', 'copy', 'compress']);
 };
