@@ -1,30 +1,28 @@
-module.exports = function(grunt) {
+module.exports = function (grunt) {
     grunt.initConfig({
         copy: {
             main: {
                 expand: true,
+                cwd: '.',
                 src: [
                     '**',
                     '!node_modules/**',
                     '!build/**',
+                    '!ecwp/**',            // don't copy the output folder into itself
                     '!.git/**',
+                    '!.github/**',
                     '!Gruntfile.js',
                     '!package.json',
                     '!package-lock.json',
-                    '!public/src/**',       // Exclude public/src/ and its contents
-                    'public/src/dist/**'    // Include only public/src/dist/
+                    '!.gitignore',
+                    '!.distignore',
+                    '!public/src/**',       // exclude the React source...
+                    'public/src/dist/**'    // ...but keep the built assets
                 ],
-                dest: 'ecwp',
-                rename: function(dest, src) {
-                    // Add parent directory to destination path
-                    return dest + '/' + src.replace(/^\/?/, '');
-                }
+                dest: 'ecwp/'
             }
         }
     });
-
     grunt.loadNpmTasks('grunt-contrib-copy');
-
     grunt.registerTask('default', ['copy']);
 };
-
