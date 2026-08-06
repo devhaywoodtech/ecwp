@@ -95,6 +95,7 @@ class Ecwp_Public {
 		);
 		wp_enqueue_script( $this->plugin_name . '-runtime', ECWP_BUILD . 'runtime~calendar.js', array( 'wp-element' ), $this->version, true );
 		wp_enqueue_script( $this->plugin_name . '-calendar', ECWP_BUILD . 'calendar.js', array( 'wp-element' ), $this->version, true );
+		wp_set_script_translations( $this->plugin_name . '-calendar', 'monthly-events-calendar', ECWP_PATH . 'languages' );
 	}
 
 	/**
@@ -169,5 +170,29 @@ class Ecwp_Public {
 		}
 
 		return $single_template;
+	}
+
+	/**
+	 * Register the calendar block.
+	 */
+	/**
+	 * Register the calendar block.
+	 */
+	public function register_blocks() {
+		register_block_type(
+			plugin_dir_path( dirname( __FILE__ ) ) . 'blocks/calendar',
+			array( 'render_callback' => array( $this, 'render_calendar_block' ) )
+		);
+	}
+
+	/**
+	 * Render callback for the calendar block.
+	 *
+	 * @param array $attributes Block attributes.
+	 * @return string
+	 */
+	public function render_calendar_block( $attributes ) {
+		$view = isset( $attributes['view'] ) ? sanitize_text_field( $attributes['view'] ) : '';
+		return sprintf( '<div id="ecwp-calendar" data-display="%s"></div>', esc_attr( $view ) );
 	}
 }

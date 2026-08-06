@@ -230,6 +230,7 @@ class Ecwp {
 		$this->loader->add_filter( 'template_include', $plugin_public, 'category_template', 99 );
 		$this->loader->add_filter( 'single_template', $plugin_public, 'single_event_template' );
 		add_shortcode( 'wp_monthly_events', array( $plugin_public, 'ecwp_monthly_events' ) );
+		$this->loader->add_action( 'init', $plugin_public, 'register_blocks' );
 
 		$hooks = new Ecwp_Hooks( $this->get_settings() );
 		$this->loader->add_action( 'modern_single_template_start', $hooks, 'template_start' );

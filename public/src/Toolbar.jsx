@@ -101,7 +101,7 @@ function Toolbar(props) {
                     {
                         !isSameMonth(latestEvent,current) && 
                         <Button variant='outlined' size="small" startIcon={<TodayIcon />} onClick={() => goToLatest() }>
-                            { applyFilters('mCalendar-text-latestEvent', __('Upcoming Events','ecwp')) }
+                            { applyFilters('mCalendar-text-latestEvent', __('Upcoming Events','monthly-events-calendar')) }
                         </Button> 
                     }        
                 </Stack>
@@ -109,7 +109,7 @@ function Toolbar(props) {
                     {
                         searchEnable === '1' && 
                         <FormControl sx={{ m: 0, width: { xs: '100%', sm: '25ch' } }} variant="standard">
-                            <InputLabel className='ecwp_search_label'>{ applyFilters('mCalendar-text-searchEvent', __('Search Events','ecwp')) }</InputLabel>
+                            <InputLabel className='ecwp_search_label'>{ applyFilters('mCalendar-text-searchEvent', __('Search Events','monthly-events-calendar')) }</InputLabel>
                             <Input 
                                 value={search} 
                                 onChange={(e) => setSearch(e.target.value)} 
@@ -136,17 +136,17 @@ function Toolbar(props) {
                         <Button startIcon={<CalendarViewMonthIcon />} 
                             onClick={() => dispatch(setView('month'))} 
                             color={view === 'month' ? 'secondary' : 'primary'} sx={{ width: { xs: '100%', sm : 'auto' } }}>
-                                {__('Month','ecwp')}
+                                {__('Month','monthly-events-calendar')}
                         </Button>
                         <Button startIcon={<ViewDayIcon />} 
                             onClick={() => dispatch(setView('day'))} 
                             color={view === 'day' ? 'secondary' : 'primary'} sx={{ width: { xs: '100%', sm : 'auto' } }}>
-                                {__('Day','ecwp')}
+                                {__('Day','monthly-events-calendar')}
                         </Button>
                         <Button startIcon={<FormatListBulletedIcon />} 
                             onClick={() => dispatch(setView('list'))} 
                             color={view === 'list' ? 'secondary' : 'primary'} sx={{ width: { xs: '100%', sm : 'auto' } }}>
-                                {__('List','ecwp')}
+                                {__('List','monthly-events-calendar')}
                         </Button>                     
                     </ButtonGroup>
                 </Stack>

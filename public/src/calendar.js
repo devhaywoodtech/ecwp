@@ -60,7 +60,7 @@ if (ecwp_add_calendar != null) {
     if(isBefore(new Date(format(fromUnixTime(endDate), 'yyyy-MM-dd kk:mm')), new Date())){
         root.render(
             <React.Fragment>
-                <div className="ecwp_expired">{ __('Ended','ecwp') }</div>                            
+                <div className="ecwp_expired">{ __('Ended','monthly-events-calendar') }</div>                            
                 <add-to-calendar-button
                     name={title}
                     options="'Google','Apple','iCal','Outlook.com','Yahoo','Microsoft365','MicrosoftTeams'"

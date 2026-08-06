@@ -46,12 +46,12 @@ export default function Admin(props) {
                 {
                     loading && <Loader />
                 }                
-                <Panel header={ __( 'Settings' , 'ecwp' ) }>
+                <Panel header={ __( 'Settings' , 'monthly-events-calendar') }>
                     <React.Fragment key=".0">
-                        <PanelBody title={ __( 'Date Settings of Calendar' , 'ecwp' ) }>
+                        <PanelBody title={ __( 'Date Settings of Calendar' , 'monthly-events-calendar') }>
                             <div className='ecwp-admin-controls'>                                   
                                 <RadioControl
-                                    label={ __( 'Select Date Format' , 'ecwp' ) }
+                                    label={ __( 'Select Date Format' , 'monthly-events-calendar') }
                                     selected={ settings?.date_format || 'Y-m-d' }
                                     options={ [
                                         { label: format(new Date(), convertPhpToJsFormat( 'F j, Y' )) + '  ' + '(F j, Y)', value: 'F j, Y' },
@@ -62,7 +62,7 @@ export default function Admin(props) {
                                     onChange={ ( value ) => setSettings('date_format' ,value )  }
                                 />  
                                 <RadioControl
-                                    label={ __( 'Select Time Fomat' , 'ecwp' ) }                                    
+                                    label={ __( 'Select Time Fomat' , 'monthly-events-calendar') }                                    
                                     selected={ settings?.time_format || 'g:i a' }
                                     options={ [
                                         { label: format(new Date(), convertPhpToJsFormat( 'g:i a' )) + '  ' + '(g:i a)', value: 'g:i a' },
@@ -72,8 +72,8 @@ export default function Admin(props) {
                                     onChange={ ( value ) => setSettings('time_format' ,value )  }
                                 /> 
                                 <SelectControl 
-                                    label={ __( 'Select Time Zone' , 'ecwp' ) } 
-                                    help ={ __( "When adding events to a calendar, ensure that the correct time zone is selected to ensure accurate date and time." , 'ecwp' )}                                    
+                                    label={ __( 'Select Time Zone' , 'monthly-events-calendar') } 
+                                    help ={ __( "When adding events to a calendar, ensure that the correct time zone is selected to ensure accurate date and time." , 'monthly-events-calendar')}                                    
                                     onChange={ ( value ) => setSettings('timezone' ,value )  }
                                     value={ settings?.timezone }
                                     >
@@ -93,11 +93,11 @@ export default function Admin(props) {
                                 </SelectControl>                                  
                             </div>
                         </PanelBody>
-                        <PanelBody title={ __( 'Display Settings of Calendar' , 'ecwp' ) }>
+                        <PanelBody title={ __( 'Display Settings of Calendar' , 'monthly-events-calendar') }>
                             <div className='ecwp-admin-controls'>                            
                                 <SelectControl 
-                                    label={ __( 'Select Default View' , 'ecwp' ) } 
-                                    help ={ __( "When the user visits the calendar, choose the default view for them." , 'ecwp' )}
+                                    label={ __( 'Select Default View' , 'monthly-events-calendar') } 
+                                    help ={ __( "When the user visits the calendar, choose the default view for them." , 'monthly-events-calendar')}
                                     value={ settings?.default_view || 'month' }                              
                                     options={ [
                                         { label: 'Month', value: 'month' },
@@ -107,28 +107,28 @@ export default function Admin(props) {
                                     onChange={ ( value ) => setSettings('default_view' ,value )  }
                                 />
                                 <RadioControl
-                                    label={ __( 'Enable or Disable Search' , 'ecwp' ) }
-                                    help ={ __( "Turn on or off the Search box for finding events by their name." , 'ecwp' )}
+                                    label={ __( 'Enable or Disable Search' , 'monthly-events-calendar') }
+                                    help ={ __( "Turn on or off the Search box for finding events by their name." , 'monthly-events-calendar')}
                                     selected={ settings?.search || '1' }
                                     options={ [
-                                        { label: __( 'Enable', 'ecwp' ), value: '1' },
-                                        { label: __( 'Disable', 'ecwp' ), value: '0' },
+                                        { label: __( 'Enable', 'monthly-events-calendar'), value: '1' },
+                                        { label: __( 'Disable', 'monthly-events-calendar'), value: '0' },
                                     ] }
                                     onChange={ ( value ) => setSettings('search' ,value )  }
                                 />
                                 <RadioControl
-                                    label={ __( 'Redirect the single event template' , 'ecwp' ) }
-                                    help ={ __( "When the user clicks on the Event name, direct them to the corresponding content either in a new tab or in the same tab, based on their preference." , 'ecwp' )}
+                                    label={ __( 'Redirect the single event template' , 'monthly-events-calendar') }
+                                    help ={ __( "When the user clicks on the Event name, direct them to the corresponding content either in a new tab or in the same tab, based on their preference." , 'monthly-events-calendar')}
                                     selected={ settings?.redirect_single || '_self' }
                                     options={ [
-                                        { label: __( 'Open in same tab', 'ecwp' ), value: '_self' },
-                                        { label: __( 'Open in new tab', 'ecwp' ) , value: '_blank' },
+                                        { label: __( 'Open in same tab', 'monthly-events-calendar'), value: '_self' },
+                                        { label: __( 'Open in new tab', 'monthly-events-calendar') , value: '_blank' },
                                     ] }
                                     onChange={ ( value ) => setSettings('redirect_single' ,value )  }
                                 />
                                 <SelectControl 
-                                    label={ __( 'Select Calender Page' , 'ecwp' ) } 
-                                    help ={ __( "Select the Page in which the calendar shortcode is added. This option is mainly used on the Events Archive page to return to the main calendar page." , 'ecwp' )}
+                                    label={ __( 'Select Calender Page' , 'monthly-events-calendar') } 
+                                    help ={ __( "Select the Page in which the calendar shortcode is added. This option is mainly used on the Events Archive page to return to the main calendar page." , 'monthly-events-calendar')}
                                     value={ settings?.page || 'month' }  
                                     onChange={ ( value ) => setSettings('page' ,value )  }
                                 >
@@ -140,36 +140,36 @@ export default function Admin(props) {
                                 </SelectControl>
                             </div>
                         </PanelBody> 
-                        <PanelBody title={ __( 'URL or Slug Settings of Calendar' , 'ecwp' ) }>
+                        <PanelBody title={ __( 'URL or Slug Settings of Calendar' , 'monthly-events-calendar') }>
                             <div className='ecwp-admin-controls'>  
                                 <TextControl
-                                    label={ __( 'Select Slug for Event Post types' , 'ecwp' ) } 
-                                    help ={ __( "Select the URL Slug for the Event post types." , 'ecwp' )}
+                                    label={ __( 'Select Slug for Event Post types' , 'monthly-events-calendar') } 
+                                    help ={ __( "Select the URL Slug for the Event post types." , 'monthly-events-calendar')}
                                     onChange={ ( value ) => setSettings('slug_event' ,value )  }
                                     value={ settings?.slug_event || 'events' }  
                                 />
                                 <TextControl
-                                    label={ __( 'Select Slug for Event Categories' , 'ecwp' ) } 
-                                    help ={ __( "Select the URL Slug for the Event Categories." , 'ecwp' )}
+                                    label={ __( 'Select Slug for Event Categories' , 'monthly-events-calendar') } 
+                                    help ={ __( "Select the URL Slug for the Event Categories." , 'monthly-events-calendar')}
                                     onChange={ ( value ) => setSettings('slug_category' ,value )  }
                                     value={ settings?.slug_category || 'events-category' }  
                                 />
                                 <TextControl
-                                    label={ __( 'Select Slug for Event Tags' , 'ecwp' ) } 
-                                    help ={ __( "Select the URL Slug for the Event Tags." , 'ecwp' )}
+                                    label={ __( 'Select Slug for Event Tags' , 'monthly-events-calendar') } 
+                                    help ={ __( "Select the URL Slug for the Event Tags." , 'monthly-events-calendar')}
                                     onChange={ ( value ) => setSettings('slug_tag' ,value )  }
                                     value={ settings?.slug_tag || 'events-tag' }  
                                 />
                             </div>
                         </PanelBody>
                         <div class="ecwp_save_settings">                                                     
-                            <Button onClick={saveSettings} variant='primary' disabled={saveText}>{ __( 'Save Settings', 'ecwp' ) }</Button>                   
+                            <Button onClick={saveSettings} variant='primary' disabled={saveText}>{ __( 'Save Settings', 'monthly-events-calendar') }</Button>                   
                         </div>
                     </React.Fragment>
                 </Panel>
             </div>     
             {
-                saveText && <Snackbar className='ecwp_snack'>{__( 'Settings saved successfully.', 'ecwp' )}</Snackbar>
+                saveText && <Snackbar className='ecwp_snack'>{__( 'Settings saved successfully.', 'monthly-events-calendar')}</Snackbar>
             }     
         </React.Fragment>
     )

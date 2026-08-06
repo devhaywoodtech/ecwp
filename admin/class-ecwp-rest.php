@@ -264,7 +264,7 @@ class Ecwp_Rest {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return new WP_Error(
 				'rest_forbidden',
-				esc_html__( 'You are not allowed to update these settings.', 'ecwp' ),
+				esc_html__( 'You are not allowed to update these settings.', 'monthly-events-calendar' ),
 				array( 'status' => $this->authorization_status_code() )
 			);
 		}
@@ -297,7 +297,7 @@ class Ecwp_Rest {
 		if ( ! current_user_can( 'manage_options' ) ) {
 			return new WP_Error(
 				'rest_forbidden',
-				esc_html__( 'You are not allowed to update these settings.', 'ecwp' ),
+				esc_html__( 'You are not allowed to update these settings.', 'monthly-events-calendar' ),
 				array( 'status' => $this->authorization_status_code() )
 			);
 		}

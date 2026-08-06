@@ -3,8 +3,8 @@ Contributors: haywoodtech
 Tags: events calendar, events, calendar, Event, organizer, schedule
 Requires at least: 6.0
 Tested up to: 7.0
-Stable tag: 1.3
-Requires PHP: 7.2
+Stable tag: 1.4
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -13,6 +13,8 @@ Monthly Events Calendar for WordPress is a powerful and user-friendly plugin tha
 == Description ==
 
 The Monthly Events Calendar for WordPress is a feature-rich plugin that enhances your WordPress website by providing a comprehensive and visually appealing way to manage, display, and promote events. This plugin is designed to help individuals, businesses, organizations, and communities efficiently organize and showcase events such as conferences, seminars, workshops, meetings, performances, webinars, social gatherings, and much more.
+
+[Check the documentation of Events Calendar's](https://wpmonthlyevents.com/)
 
 This plugin used the REST API to display the events. 
 
@@ -73,6 +75,11 @@ No. You need to enable the REST API if some of the security plugins denied that.
 3. Screenshot for the List View in the Events Calendar.
 
 == Changelog ==
+
+= 1.4 =
+* New: Gutenberg block for inserting the events calendar (shortcode still supported).
+* Fix: Text domain now matches the plugin slug, so translations and language packs load correctly.
+* Compatibility: Tested up to WordPress 7.0; PHP requirement set to 7.4.
 
 = 1.3 =
 * Fix: Month and Upcoming views now resolve event dates reliably across timezones; past events no longer appear under Upcoming, and events now show in the correct month.

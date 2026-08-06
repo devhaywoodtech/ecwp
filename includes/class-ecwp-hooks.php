@@ -174,7 +174,7 @@ class Ecwp_Hooks {
 					printf( '<div class="ecwp_items"><span class="material-icons">email</span><div class="ecwp_item"><div class="ecwp_title"><a href="mailto:%s">%s</a></div></div></div>', esc_attr( $meta_value ), esc_attr( $meta_value ) );
 					break;
 				case 'url_website':
-					printf( '<div class="ecwp_items"><span class="material-icons">public</span><div class="ecwp_item"><div class="ecwp_title"><a target="_blank" href="%s">%s</a></div></div></div>', esc_attr( $meta_value ), esc_html__( 'Link to website', 'ecwp' ) );
+					printf( '<div class="ecwp_items"><span class="material-icons">public</span><div class="ecwp_item"><div class="ecwp_title"><a target="_blank" href="%s">%s</a></div></div></div>', esc_attr( $meta_value ), esc_html__( 'Link to website', 'monthly-events-calendar' ) );
 					break;
 			}
 		}
@@ -185,13 +185,13 @@ class Ecwp_Hooks {
 	 **/
 	public function modern_sidebar() {
 		echo wp_kses_post( apply_filters( 'modern_single_sidebar_start', '<div class="ecwp_sidebar">' ) );
-		echo wp_kses_post( apply_filters( 'modern_sidebar_title', sprintf( "<div class='ecwp_sidebar_title'>%s</div>", __( 'Event Details', 'ecwp' ) ) ) );
+		echo wp_kses_post( apply_filters( 'modern_sidebar_title', sprintf( "<div class='ecwp_sidebar_title'>%s</div>", __( 'Event Details', 'monthly-events-calendar' ) ) ) );
 		do_action( 'monthly_events_start_date', get_the_ID() );
 		do_action( 'monthly_events_end_date', get_the_ID() );
 		do_action( 'monthly_events_location', get_the_ID() );
 		do_action( 'monthly_events_address', get_the_ID() );
-		do_action( 'monthly_events_category', get_the_ID(), 'wood-category', __( 'Category', 'ecwp' ) );
-		do_action( 'monthly_events_category', get_the_ID(), 'wood-event-tag', __( 'Tags', 'ecwp' ) );
+		do_action( 'monthly_events_category', get_the_ID(), 'wood-category', __( 'Category', 'monthly-events-calendar' ) );
+		do_action( 'monthly_events_category', get_the_ID(), 'wood-event-tag', __( 'Tags', 'monthly-events-calendar' ) );
 		do_action( 'monthly_events_website', get_the_ID() );
 		do_action( 'monthly_events_button', get_the_ID() );
 		echo wp_kses_post( apply_filters( 'modern_single_sidebar_end', '</div>' ) );
@@ -207,7 +207,7 @@ class Ecwp_Hooks {
 	public function return_start_date( $post_id ) {
 		$startdate = get_post_meta( $post_id, $this->event . 'date_start', true );
 		$start     = apply_filters( 'monthly_events_time', $startdate, $post_id );
-		return printf( '<div class="ecwp_items"><span class="material-icons">event_available</span><div class="ecwp_item"><div class="ecwp_title">%s</div><time id="ecwp_startDate" datetime="%s" unix=%s itemprop="startDate">&nbsp;</time></div></div>', esc_html__( 'Start date', 'ecwp' ), esc_attr( $start ), esc_attr( $startdate ) );
+		return printf( '<div class="ecwp_items"><span class="material-icons">event_available</span><div class="ecwp_item"><div class="ecwp_title">%s</div><time id="ecwp_startDate" datetime="%s" unix=%s itemprop="startDate">&nbsp;</time></div></div>', esc_html__( 'Start date', 'monthly-events-calendar' ), esc_attr( $start ), esc_attr( $startdate ) );
 	}
 
 	/**
@@ -220,7 +220,7 @@ class Ecwp_Hooks {
 	public function return_end_date( $post_id ) {
 		$enddate = get_post_meta( $post_id, $this->event . 'date_end', true );
 		$end     = apply_filters( 'monthly_events_time', $enddate, $post_id );
-		return printf( '<div class="ecwp_items"><span class="material-icons">event_busy</span><div class="ecwp_item"><div class="ecwp_title">%s</div><time id="ecwp_endDate" datetime="%s" unix=%s itemprop="endDate">&nbsp;</time></div></div>', esc_html__( 'End date', 'ecwp' ), esc_attr( $end ), esc_attr( $enddate ) );
+		return printf( '<div class="ecwp_items"><span class="material-icons">event_busy</span><div class="ecwp_item"><div class="ecwp_title">%s</div><time id="ecwp_endDate" datetime="%s" unix=%s itemprop="endDate">&nbsp;</time></div></div>', esc_html__( 'End date', 'monthly-events-calendar' ), esc_attr( $end ), esc_attr( $enddate ) );
 	}
 
 	/**
@@ -235,7 +235,7 @@ class Ecwp_Hooks {
 		if ( '' !== $location && null !== $location ) {
 			$venue = apply_filters( 'monthly_events_venue', $location );
 			if ( '' !== $venue && null !== $venue ) {
-				return printf( '<div class="ecwp_items"><span class="material-icons">location_on</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_html__( 'Location', 'ecwp' ), esc_attr( $venue ) );
+				return printf( '<div class="ecwp_items"><span class="material-icons">location_on</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_html__( 'Location', 'monthly-events-calendar' ), esc_attr( $venue ) );
 			}
 		}
 	}
@@ -272,7 +272,7 @@ class Ecwp_Hooks {
 			return $address_string;
 		}
 		if ( '' !== $address_string ) {
-			return printf( '<div class="ecwp_items"><span class="material-icons">my_location</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_html__( 'Address', 'ecwp' ), esc_attr( $address_string ) );
+			return printf( '<div class="ecwp_items"><span class="material-icons">my_location</span><div class="ecwp_item"><div class="ecwp_title">%s</div><p>%s</p></div></div>', esc_html__( 'Address', 'monthly-events-calendar' ), esc_attr( $address_string ) );
 		}
 	}
 
@@ -313,7 +313,7 @@ class Ecwp_Hooks {
 	public function return_website( $post_id ) {
 		$url_website = get_post_meta( $post_id, $this->event . 'url_website', true );
 		if ( '' !== $url_website ) {
-			return printf( '<div class="ecwp_items"><span class="material-icons">travel_explore</span><div class="ecwp_item"><div class="ecwp_title">%s</div><a href="%s" target="_blank">%s</a></div></div>', esc_html__( 'Website', 'ecwp' ), esc_url( $url_website ), esc_html__( 'Link to website', 'ecwp' ) );
+			return printf( '<div class="ecwp_items"><span class="material-icons">travel_explore</span><div class="ecwp_item"><div class="ecwp_title">%s</div><a href="%s" target="_blank">%s</a></div></div>', esc_html__( 'Website', 'monthly-events-calendar' ), esc_url( $url_website ), esc_html__( 'Link to website', 'monthly-events-calendar' ) );
 		}
 	}
 
@@ -324,7 +324,7 @@ class Ecwp_Hooks {
 	 **/
 	public function return_taxonomy_title( $term ) {
 		$page_url  = ( isset( $this->settings['page'] ) && 0 !== $this->settings['page'] ) ? get_permalink( $this->settings['page'] ) : '';
-		$page_name = __( 'Events', 'ecwp' );
+		$page_name = __( 'Events', 'monthly-events-calendar' );
 		printf( "<div class='ecwp_terms'><div class='ecwp_term_title'><a href='%s'>%s</a>/<p>%s</p></div></div>", esc_url( $page_url ), esc_attr( $page_name ), esc_attr( $term->name ) );
 	}
 

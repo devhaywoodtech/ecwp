@@ -34,7 +34,7 @@ function List(props) {
                         <Image img={val?.ecwp?.img} />
                         { 
                             isBefore(new Date(format(fromUnixTime(val?.ecwp?.enddate), 'yyyy-MM-dd kk:mm')), new Date()) &&
-                            <div className="ecwp_expired">{ __('Ended','ecwp') }</div>                            
+                            <div className="ecwp_expired">{ __('Ended','monthly-events-calendar') }</div>                            
                         }
                     </div>
                 )

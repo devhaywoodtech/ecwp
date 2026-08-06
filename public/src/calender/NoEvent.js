@@ -4,9 +4,9 @@ import { __ } from '@wordpress/i18n';
 
 function NoEvent( props ){ 
     const { current, search } = props;
-    let stripText = __('There are no events available for','ecwp')+ " " + format(current,'LLLL, yyyy');
+    let stripText = __('There are no events available for','monthly-events-calendar')+ " " + format(current,'LLLL, yyyy');
     if(search === true){
-        stripText = __('There are no events available','ecwp');
+        stripText = __('There are no events available','monthly-events-calendar');
     }    
     return (
         <div className="ecwp_no_events">

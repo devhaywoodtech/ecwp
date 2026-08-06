@@ -50,10 +50,10 @@ class Ecwp_Columns {
 		unset( $columns['date'] );
 		unset( $columns['comments'] );
 		$new_columns = array(
-			'event_start' => __( 'Start Date', 'ecwp' ),
-			'event_end'   => __( 'End Date', 'ecwp' ),
-			'event_venue' => __( 'Venue', 'ecwp' ),
-			'event_color' => __( 'Color', 'ecwp' ),
+			'event_start' => __( 'Start Date', 'monthly-events-calendar' ),
+			'event_end'   => __( 'End Date', 'monthly-events-calendar' ),
+			'event_venue' => __( 'Venue', 'monthly-events-calendar' ),
+			'event_color' => __( 'Color', 'monthly-events-calendar' ),
 		);
 		return array_merge( $columns, $new_columns );
 	}

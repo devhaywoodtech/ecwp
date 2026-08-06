@@ -94,7 +94,7 @@ class Ecwp_Metabox {
 	public function add() {
 		add_meta_box(
 			'ecwp_details',
-			__( 'Event Details', 'ecwp' ),
+			__( 'Event Details', 'monthly-events-calendar' ),
 			array( $this, 'event_details' ),
 			array( 'wood-event' ),
 			'normal',
@@ -102,7 +102,7 @@ class Ecwp_Metabox {
 		);
 		add_meta_box(
 			'ecwp_locaton_details',
-			__( 'Location Details', 'ecwp' ),
+			__( 'Location Details', 'monthly-events-calendar' ),
 			array( $this, 'location_details' ),
 			array( 'wood-event', 'wood-venue' ),
 			'normal',
@@ -110,7 +110,7 @@ class Ecwp_Metabox {
 		);
 		add_meta_box(
 			'organizer_details_for_event',
-			__( 'Organizer Details', 'ecwp' ),
+			__( 'Organizer Details', 'monthly-events-calendar' ),
 			array( $this, 'organizer_details_for_event' ),
 			array( 'wood-event' ),
 			'normal',
@@ -118,7 +118,7 @@ class Ecwp_Metabox {
 		);
 		add_meta_box(
 			'ecwp_organizer_details',
-			__( 'Organizer Details', 'ecwp' ),
+			__( 'Organizer Details', 'monthly-events-calendar' ),
 			array( $this, 'organizer_details' ),
 			array( 'wood-organizers' ),
 			'normal',
@@ -296,15 +296,15 @@ class Ecwp_Metabox {
 		wp_nonce_field( $this->event . 'action', $this->event . 'nonce' );
 
 		// Date & Time Controls Loop.
-		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Date & Time', 'ecwp' ) . '</h3></div>' );
+		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Date & Time', 'monthly-events-calendar' ) . '</h3></div>' );
 		printf( "<div class='ecwp_inside'>" );
 		$ecwp_date_range = is_array( $values ) && array_key_exists( $this->event . 'date_range', $values ) ? $values[ $this->event . 'date_range' ][0] : '';
 		$ecwp_date_start = is_array( $values ) && array_key_exists( $this->event . 'date_start', $values ) ? $values[ $this->event . 'date_start' ][0] : '';
 		$ecwp_date_end   = is_array( $values ) && array_key_exists( $this->event . 'date_end', $values ) ? $values[ $this->event . 'date_end' ][0] : '';
 		$controls        = array(
-			$this->event . 'date_range' => array( 'date', esc_html__( 'Pick your Event Date Range', 'ecwp' ) . '(' . ECWP_JS_ADMIN_DATE . ')', 'datetimes', $ecwp_date_range ),
-			$this->event . 'date_start' => array( 'hidden', esc_html__( 'Event Start Date', 'ecwp' ), 'startdate', $ecwp_date_start ),
-			$this->event . 'date_end'   => array( 'hidden', esc_html__( 'Event End Date', 'ecwp' ), 'enddate', $ecwp_date_end ),
+			$this->event . 'date_range' => array( 'date', esc_html__( 'Pick your Event Date Range', 'monthly-events-calendar' ) . '(' . ECWP_JS_ADMIN_DATE . ')', 'datetimes', $ecwp_date_range ),
+			$this->event . 'date_start' => array( 'hidden', esc_html__( 'Event Start Date', 'monthly-events-calendar' ), 'startdate', $ecwp_date_start ),
+			$this->event . 'date_end'   => array( 'hidden', esc_html__( 'Event End Date', 'monthly-events-calendar' ), 'enddate', $ecwp_date_end ),
 		);
 		foreach ( $controls as $keys => $control ) {
 			new Ecwp_Form( $keys, $control[0], $control[1], $control[2], $control[3], array() );
@@ -312,13 +312,13 @@ class Ecwp_Metabox {
 		printf( '</div>' );
 
 		// Other Details Control Loop.
-		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Event Website', 'ecwp' ) . '</h3></div>' );
+		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Event Website', 'monthly-events-calendar' ) . '</h3></div>' );
 		printf( "<div class='ecwp_inside'>" );
 		$ecwp_url_website = is_array( $values ) && array_key_exists( $this->event . 'url_website', $values ) ? $values[ $this->event . 'url_website' ][0] : '';
 		$ecwp_color_bg    = is_array( $values ) && array_key_exists( $this->event . 'text_bg', $values ) ? $values[ $this->event . 'text_bg' ][0] : '';
 		$controls         = array(
-			$this->event . 'url_website' => array( 'url', esc_html__( 'URL', 'ecwp' ), 'website ecwp_fullwidth', $ecwp_url_website ),
-			$this->event . 'text_bg'     => array( 'text', esc_html__( 'Highlight Color', 'ecwp' ), 'ecwp_colors ecwp_fullwidth', $ecwp_color_bg ),
+			$this->event . 'url_website' => array( 'url', esc_html__( 'URL', 'monthly-events-calendar' ), 'website ecwp_fullwidth', $ecwp_url_website ),
+			$this->event . 'text_bg'     => array( 'text', esc_html__( 'Highlight Color', 'monthly-events-calendar' ), 'ecwp_colors ecwp_fullwidth', $ecwp_color_bg ),
 		);
 		foreach ( $controls as $keys => $control ) {
 			new Ecwp_Form( $keys, $control[0], $control[1], $control[2], $control[3], array() );
@@ -332,7 +332,7 @@ class Ecwp_Metabox {
 	 * @param WP_Post $post   Post object.
 	 */
 	public function location_details( $post ) {
-		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Venue', 'ecwp' ) . '</h3></div>' );
+		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Venue', 'monthly-events-calendar' ) . '</h3></div>' );
 		$venue_id = get_post_meta( $post->ID, $this->slug . 'venue_id', true );
 
 		if ( '' === $venue_id ) {
@@ -349,17 +349,17 @@ class Ecwp_Metabox {
 			// Add Venue name if this metabox is listed in the wood-event postype.
 			if ( 'wood-event' === $post->post_type ) {
 				$title = is_array( $values ) && array_key_exists( $this->location . 'text_title', $values ) ? $values[ $this->location . 'text_title' ][0] : '';
-				new Ecwp_Form( $this->location . 'text_title', 'text', esc_html__( 'Venue Name', 'ecwp' ), 'ecwp_fullwidth', $title, array() );
+				new Ecwp_Form( $this->location . 'text_title', 'text', esc_html__( 'Venue Name', 'monthly-events-calendar' ), 'ecwp_fullwidth', $title, array() );
 			}
 
 			$controls = array(
-				$this->location . 'text_address'    => array( 'text', esc_html__( 'Address', 'ecwp' ), 'ecwp_fullwidth', $address ),
-				$this->location . 'text_city'       => array( 'text', esc_html__( 'Add City', 'ecwp' ), '', $city ),
-				$this->location . 'text_state'      => array( 'text', esc_html__( 'State or Province', 'ecwp' ), '', $state ),
-				$this->location . 'text_country'    => array( 'country', esc_html__( 'Country', 'ecwp' ), '', $country ),
-				$this->location . 'text_postalcode' => array( 'text', esc_html__( 'Postal Code', 'ecwp' ), '', $postalcode ),
-				$this->location . 'text_phone'      => array( 'text', esc_html__( 'Phone', 'ecwp' ), '', $phone ),
-				$this->location . 'url_website'     => array( 'text', esc_html__( 'Website', 'ecwp' ), '', $website ),
+				$this->location . 'text_address'    => array( 'text', esc_html__( 'Address', 'monthly-events-calendar' ), 'ecwp_fullwidth', $address ),
+				$this->location . 'text_city'       => array( 'text', esc_html__( 'Add City', 'monthly-events-calendar' ), '', $city ),
+				$this->location . 'text_state'      => array( 'text', esc_html__( 'State or Province', 'monthly-events-calendar' ), '', $state ),
+				$this->location . 'text_country'    => array( 'country', esc_html__( 'Country', 'monthly-events-calendar' ), '', $country ),
+				$this->location . 'text_postalcode' => array( 'text', esc_html__( 'Postal Code', 'monthly-events-calendar' ), '', $postalcode ),
+				$this->location . 'text_phone'      => array( 'text', esc_html__( 'Phone', 'monthly-events-calendar' ), '', $phone ),
+				$this->location . 'url_website'     => array( 'text', esc_html__( 'Website', 'monthly-events-calendar' ), '', $website ),
 			);
 			foreach ( $controls as $keys => $control ) {
 				new Ecwp_Form( $keys, $control[0], $control[1], $control[2], $control[3], array() );
@@ -368,11 +368,11 @@ class Ecwp_Metabox {
 
 			// Select Already existing Venue Names from wood-event postypes.
 			if ( 'wood-event' === $post->post_type ) {
-				new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
+				new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'monthly-events-calendar' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
 			}
 		} else {
-			new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'ecwp' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
-			printf( "<a href='%s' target='_blank'>%s</a>", esc_url( get_edit_post_link( $venue_id ) ), esc_html__( 'Edit Venue', 'ecwp' ) );
+			new Ecwp_Form( $this->slug . 'venue_id', 'wpdropdown', esc_html__( 'Select Existing Venue Name', 'monthly-events-calendar' ), 'ecwp_select', $venue_id, array( 'wood-venue' ) );
+			printf( "<a href='%s' target='_blank'>%s</a>", esc_url( get_edit_post_link( $venue_id ) ), esc_html__( 'Edit Venue', 'monthly-events-calendar' ) );
 		}
 	}
 
@@ -382,31 +382,31 @@ class Ecwp_Metabox {
 	 * @param WP_Post $post   Post object.
 	 */
 	public function organizer_details_for_event( $post ) {
-		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Organizers', 'ecwp' ) . '</h3></div>' );
+		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Organizers', 'monthly-events-calendar' ) . '</h3></div>' );
 		$organizer_id = get_post_meta( $post->ID, $this->slug . 'organizer_id', true );
 		if ( ! empty( $organizer_id ) ) {
 			printf( "<div class='ecwp_inside ecwp_organizer_inside'>" );
 			foreach ( $organizer_id as $id ) {
 				printf( "<div class='ecwp_inside ecwp_organizer_select' id='ecwp_org_select_%d'>", esc_attr( $id ) );
-					new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'ecwp' ), '', $id, array( 'wood-organizers' ), true );
+					new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'monthly-events-calendar' ), '', $id, array( 'wood-organizers' ), true );
 
 					printf( "<div class='ecwp_organizer_actions'>" );
-						printf( "<a href='%s' class='ecwp_edit_org' target='_blank'>%s</a>", esc_url( get_edit_post_link( $id ) ), esc_html__( 'Edit Organizer', 'ecwp' ) );
-						printf( "<a href='%s' data-id='%d' class='ecwp_remove_org'>%s</a>", 'javascript:', esc_attr( $id ), esc_html__( 'Remove Organizer', 'ecwp' ) );
+						printf( "<a href='%s' class='ecwp_edit_org' target='_blank'>%s</a>", esc_url( get_edit_post_link( $id ) ), esc_html__( 'Edit Organizer', 'monthly-events-calendar' ) );
+						printf( "<a href='%s' data-id='%d' class='ecwp_remove_org'>%s</a>", 'javascript:', esc_attr( $id ), esc_html__( 'Remove Organizer', 'monthly-events-calendar' ) );
 					printf( '</div>' );
 				printf( '</div>' );
 			}
 			printf( '</div>' );
 
 			printf( "<div class='ecwp_organizer_content'>" );
-			printf( "<div class='ecwp_new ecwp_organizer_new'><a href='javascript:'>%s</a></div>", esc_html__( 'Create or Add New Organizer', 'ecwp' ) );
+			printf( "<div class='ecwp_new ecwp_organizer_new'><a href='javascript:'>%s</a></div>", esc_html__( 'Create or Add New Organizer', 'monthly-events-calendar' ) );
 			printf( '</div>' );
 
 		} else {
 			printf( "<div class='ecwp_inside ecwp_organizer_inside'>" );
 			printf( '</div>' );
 			printf( "<div class='ecwp_organizer_content'>" );
-			printf( "<div class='ecwp_new ecwp_organizer_new'><a href='javascript:'>%s</a></div>", esc_html__( 'Create or Add New Organizer', 'ecwp' ) );
+			printf( "<div class='ecwp_new ecwp_organizer_new'><a href='javascript:'>%s</a></div>", esc_html__( 'Create or Add New Organizer', 'monthly-events-calendar' ) );
 			printf( '</div>' );
 		}
 	}
@@ -418,7 +418,7 @@ class Ecwp_Metabox {
 	 */
 	public function organizer_details( $post ) {
 		wp_nonce_field( $this->organizer . 'action', $this->organizer . 'nonce' );
-		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Organizers', 'ecwp' ) . '</h3></div>' );
+		printf( "<div class='ecwp_field_heading'><h3>" . esc_html__( 'Organizers', 'monthly-events-calendar' ) . '</h3></div>' );
 		printf( "<div class='ecwp_inside ecwp_organizer_inside'>" );
 		$this->org_fields( $post->ID, 'wood-organizers', false );
 		printf( '</div>' );
@@ -457,21 +457,21 @@ class Ecwp_Metabox {
 		// Add Organizer name if this metabox is listed in the wood-event postype.
 		if ( 'wood-event' === $post_type ) {
 			if ( $organizers_count > 0 ) {
-				new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'ecwp' ), 'ecwp_select', '', array( 'wood-organizers' ), $ajax );
+				new Ecwp_Form( $this->slug . 'organizer_id', 'wpdropdown', esc_html__( 'Select Existing Organizer Name', 'monthly-events-calendar' ), 'ecwp_select', '', array( 'wood-organizers' ), $ajax );
 
 			}
 			if ( $organizers_count > 0 ) {
 				printf( "<div class='ecwp_other_fields' id='ecwp_org_other_%d'>", esc_attr( $count ) );
-				printf( "<div class='ecwp_new_or'>%s</div>", esc_html__( 'OR', 'ecwp' ) );
+				printf( "<div class='ecwp_new_or'>%s</div>", esc_html__( 'OR', 'monthly-events-calendar' ) );
 			}
 			$title = is_array( $values ) && array_key_exists( $this->organizer . 'text_title', $values ) ? $values[ $this->organizer . 'text_title' ][0] : '';
-			new Ecwp_Form( $this->organizer . 'text_title', 'text', esc_html__( 'Organizer Name', 'ecwp' ), 'ecwp_fullwidth', $title, array(), $ajax );
+			new Ecwp_Form( $this->organizer . 'text_title', 'text', esc_html__( 'Organizer Name', 'monthly-events-calendar' ), 'ecwp_fullwidth', $title, array(), $ajax );
 		}
 
 		$controls = array(
-			$this->organizer . 'text_phone'  => array( 'text', esc_html__( 'Phone', 'ecwp' ), 'ecwp_fullwidth', $phone, $ajax ),
-			$this->organizer . 'url_website' => array( 'url', esc_html__( 'Website', 'ecwp' ), 'ecwp_fullwidth', $website, $ajax ),
-			$this->organizer . 'email_email' => array( 'email', esc_html__( 'Email', 'ecwp' ), 'ecwp_fullwidth', $email, $ajax ),
+			$this->organizer . 'text_phone'  => array( 'text', esc_html__( 'Phone', 'monthly-events-calendar' ), 'ecwp_fullwidth', $phone, $ajax ),
+			$this->organizer . 'url_website' => array( 'url', esc_html__( 'Website', 'monthly-events-calendar' ), 'ecwp_fullwidth', $website, $ajax ),
+			$this->organizer . 'email_email' => array( 'email', esc_html__( 'Email', 'monthly-events-calendar' ), 'ecwp_fullwidth', $email, $ajax ),
 		);
 		foreach ( $controls as $keys => $control ) {
 			new Ecwp_Form( $keys, $control[0], $control[1], $control[2], $control[3], array(), $control[4] );
@@ -480,7 +480,7 @@ class Ecwp_Metabox {
 			printf( '</div>' ); // Close the .ecwp_other_fields div.
 		}
 		if ( 'wood-event' === $post_type ) {
-			printf( "<a href='%s' data-id='%d' class='ecwp_remove_org'>%s</a>", 'javascript:', esc_attr( $count ), esc_html__( 'Remove Organizer', 'ecwp' ) );
+			printf( "<a href='%s' data-id='%d' class='ecwp_remove_org'>%s</a>", 'javascript:', esc_attr( $count ), esc_html__( 'Remove Organizer', 'monthly-events-calendar' ) );
 		}
 		printf( '</div>' );
 		if ( $ajax ) {

@@ -12,7 +12,7 @@ function DayEvent(props) {
         <section className='ecwp_events'>
             {
                 filteredData.length === 0 &&
-                <p className='ecwp_no_day_event'>{ __('No events were found for the selected day.','ecwp') }</p>
+                <p className='ecwp_no_day_event'>{ __('No events were found for the selected day.','monthly-events-calendar') }</p>
             }
             {                                                                                               
                 filteredData && filteredData.map((val, key) => {

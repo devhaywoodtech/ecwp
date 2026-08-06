@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "ecwp/calendar",
+	"title": "Monthly Events Calendar",
+	"category": "widgets",
+	"icon": "calendar-alt",
+	"description": "Display the Monthly Events Calendar.",
+	"keywords": [ "events", "calendar", "monthly" ],
+	"textdomain": "monthly-events-calendar",
+	"attributes": {
+		"view": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "multiple": false },
+	"editorScript": "file:./index.js"
+}
