@@ -20,7 +20,8 @@ module.exports = function (grunt) {
                     '!.gitignore',
                     '!.distignore',
                     '!public/src/**',
-                    'public/src/dist/**'
+                    'public/src/dist/**',
+                    '!release.sh',
                     // blocks/** is covered by ** and not excluded — verify it lands
                 ],
                 dest: 'ecwp/'
