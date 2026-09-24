@@ -145,9 +145,9 @@ class Ecwp_Admin {
 			)
 		);
 		wp_enqueue_script( $this->plugin_name . '-runtime', ECWP_BUILD . 'runtime~calendar.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name . '-calendar', ECWP_BUILD . 'calendar.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );
-		wp_set_script_translations( $this->plugin_name . '-admin', 'monthly-events-calendar', ECWP_PATH . 'languages' );
+		wp_enqueue_script( $this->plugin_name . '-calendar', ECWP_BUILD . 'calendar.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );		
 		wp_enqueue_script( $this->plugin_name . '-admin', ECWP_BUILD . 'admin.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );
+		wp_set_script_translations( $this->plugin_name . '-admin', 'monthly-events-calendar', ECWP_DIR . 'languages' );
 		wp_enqueue_media();
 		wp_enqueue_script( 'wp-color-picker' );
 	}

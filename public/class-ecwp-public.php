@@ -94,8 +94,8 @@ class Ecwp_Public {
 			)
 		);
 		wp_enqueue_script( $this->plugin_name . '-runtime', ECWP_BUILD . 'runtime~calendar.js', array( 'wp-element' ), $this->version, true );
-		wp_enqueue_script( $this->plugin_name . '-calendar', ECWP_BUILD . 'calendar.js', array( 'wp-element' ), $this->version, true );
-		wp_set_script_translations( $this->plugin_name . '-calendar', 'monthly-events-calendar', ECWP_PATH . 'languages' );
+		wp_enqueue_script( $this->plugin_name . '-calendar', ECWP_BUILD . 'calendar.js', array( 'wp-element', 'wp-i18n' ), $this->version, true );
+		wp_set_script_translations( $this->plugin_name . '-calendar', 'monthly-events-calendar', ECWP_DIR . 'languages' );
 	}
 
 	/**

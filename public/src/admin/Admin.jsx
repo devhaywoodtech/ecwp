@@ -38,7 +38,7 @@ export default function Admin(props) {
                 <div className="ecwp-admin-container">
                     <div className="ecwp-admin-logo">
                         <img src={logo} />
-                        <p>Use the shortcode <span>[wp_monthly_events]</span> on your page to display the Events Calendar.</p>
+                        {<p>Use the shortcode <span>[wp_monthly_events]</span> on your page to display the Events Calendar.</p>}
                     </div>
                 </div>
             </div>            
@@ -100,9 +100,9 @@ export default function Admin(props) {
                                     help ={ __( "When the user visits the calendar, choose the default view for them." , 'monthly-events-calendar')}
                                     value={ settings?.default_view || 'month' }                              
                                     options={ [
-                                        { label: 'Month', value: 'month' },
-                                        { label: 'Day', value: 'day' },
-                                        { label: 'List', value: 'list' },
+                                        { label: __('Month', 'monthly-events-calendar'), value: 'month' },
+                                        { label: __('Day', 'monthly-events-calendar'), value: 'day' },
+                                        { label: __('List', 'monthly-events-calendar'), value: 'list' },
                                     ] }
                                     onChange={ ( value ) => setSettings('default_view' ,value )  }
                                 />

@@ -1,0 +1,9 @@
+{
+  "public/src/calendar.js": "public/src/dist/calendar.js",
+  "public/src/Toolbar.jsx": "public/src/dist/calendar.js",
+  "public/src/calender/List.js": "public/src/dist/calendar.js",
+  "public/src/calender/NoEvent.js": "public/src/dist/calendar.js",
+  "public/src/calender/event/DayEvent.js": "public/src/dist/calendar.js",
+  "public/src/admin/Admin.jsx": "public/src/dist/admin.js",
+  "blocks/calendar/index.js": "blocks/calendar/index.js"
+}

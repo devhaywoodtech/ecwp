@@ -9,7 +9,7 @@
  * Plugin Name:       Monthly Events Calendar
  * Plugin URI:        https://wpmonthlyevents.com/
  * Description:       Monthly Events Calendar is a powerful calendar and user-friendly plugin that allows you to effortlessly manage and showcase events on your WordPress website.
- * Version:           1.4
+ * Version:           1.5
  * Author:            Haywood Devteam
  * Author URI:        https://haywoodtech.it
  * License:           GPL-2.0+
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Currently plugin version.
  * Start at version 1.0.0
  */
-define( 'ECWP_VERSION', '1.4' );
+define( 'ECWP_VERSION', '1.5' );
 define( 'ECWP_ABS_PATH', __DIR__ . '/' );
 define( 'ECWP_PATH', plugin_dir_url( __FILE__ ) );
 define( 'ECWP_DIR', plugin_dir_path( __FILE__ ) );

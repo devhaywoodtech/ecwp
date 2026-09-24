@@ -4,7 +4,8 @@ module.exports = {
     mode: "production",
     externals: {
         "react": "React",
-        "react-dom": "ReactDOM"
+        "react-dom": "ReactDOM",
+        "@wordpress/i18n": ["wp", "i18n"],
     },
     entry: {
       admin : "./admin/settings.js",
